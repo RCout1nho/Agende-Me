@@ -1,5 +1,6 @@
 {
   "expo": {
+    "sdkVersion": "36.0.0",
     "name": "HelloWorld",
     "slug": "mobile",
     "platforms": [
