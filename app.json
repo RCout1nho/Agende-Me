@@ -1,7 +1,7 @@
 {
   "expo": {
     "sdkVersion": "36.0.0",
-    "name": "HelloWorld",
+    "name": "AgendeMe",
     "slug": "mobile",
     "platforms": [
       "ios",
