@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image, Text } from 'react-native';
-import { Headline } from 'react-native-paper';
 
 import {
   Container, CardContainer, LogoContainer, CardLogo,
@@ -9,7 +8,7 @@ import {
 } from './styles';
 
 import background from '../../assets/background.png';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo-B.png';
 
 export default function Home() {
   return (
@@ -17,7 +16,7 @@ export default function Home() {
       <LogoContainer>
         <Image source={background} style={{ width: '100%' }} />
       </LogoContainer>
-      <CardContainer>
+      <CardContainer >
         <CardLogo>
           <Image source={logo} />
         </CardLogo>
@@ -28,7 +27,7 @@ export default function Home() {
           <CardDescriptionText>When placing an order, select the option “Contactless delivery” and
             the courier will leave your order at the door.</CardDescriptionText>
         </CardDescription>
-        <BtnBook activeOpacity={0.8} >
+        <BtnBook activeOpacity={0.8}>
           <BtnBookText>BOOK NOW</BtnBookText>
         </BtnBook>
       </CardContainer>

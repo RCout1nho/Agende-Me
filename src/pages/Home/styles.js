@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Headline, Subheading } from 'react-native-paper';
 
 export const Container = styled.View`
   background: #97FFB7;
@@ -16,6 +17,7 @@ export const CardContainer = styled.View`
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   height: 450px;
+  elevation: 20;
 `;
 
 export const CardLogo = styled.View`
@@ -29,21 +31,21 @@ export const CardTitle = styled.View`
   align-items: center;
 `;
 
-export const CardTitleText = styled.Text`
-  font-size: 34px;
+export const CardTitleText = styled(Headline)`
   font-weight: bold;
   color: #2D0C57;
 `;
 
-export const CardDescription = styled.Text`
+export const CardDescription = styled.View`
   text-align: center;
   padding-left: 10px;
   padding-right: 10px;
 `;
 
-export const CardDescriptionText = styled.Text`
+export const CardDescriptionText = styled(Subheading)`
   color: #9586A8;
-  font-size: 19px;
+  font-size: 17px;
+  text-align: center;
 `;
 
 export const BtnBook = styled.TouchableOpacity`
