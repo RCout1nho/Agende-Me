@@ -20,7 +20,8 @@ export default function SearchBar({ placeholder, marginTop = 0 }) {
       marginTop
     },
     textInput: {
-      fontSize: 15
+      fontSize: 15,
+      width: '95%'
     }
   });
 

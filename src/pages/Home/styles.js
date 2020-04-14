@@ -48,7 +48,7 @@ export const CardDescriptionText = styled(Subheading)`
   text-align: center;
 `;
 
-export const BtnBook = styled.TouchableOpacity`
+export const BtnRegister = styled.TouchableOpacity`
   height: 56px;
   width: 370px;
   background: #3BC365;
@@ -59,7 +59,24 @@ export const BtnBook = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-export const BtnBookText = styled.Text`
+export const BtnRegisterText = styled.Text`
   font-size: 18px;
   color: #fff;
+`;
+
+export const BtnLogin = styled.TouchableOpacity`
+  height: 56px;
+  width: 370px;
+
+  align-self: center;
+  margin-top: 30px;
+  border-radius: 8px;
+  border: 1px solid #3BC365;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const BtnLoginText = styled.Text`
+  font-size: 18px;
+  color: #3BC365;
 `;
