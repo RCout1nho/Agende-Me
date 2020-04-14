@@ -10,6 +10,7 @@ import Categories from './pages/Categories';
 import Booking from './pages/Booking';
 import Ticket from './pages/Ticket';
 import Profile from './pages/Profile';
+import Login from './pages/Login';
 
 import clock from './assets/clock.png';
 import grid from './assets/grid.png';
@@ -49,6 +50,11 @@ export default function Routes() {
           )
         }} />
         <Tab.Screen name="Profile" component={Profile} options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialIcons name="lock" size={24} color={color} />
+          )
+        }} />
+        <Tab.Screen name="Login" component={Login} options={{
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="lock" size={24} color={color} />
           )
