@@ -4,8 +4,12 @@ import { Dropdown } from 'react-native-material-dropdown';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import {
-  Container, StatusBar, ContainerTitle, NameMarket, FavButton, TextTitle, ImgCarousel, ContainerMarket, ContainerList, ContainerAdress, TextAdress, Adress, ContainerDropdown, ScheduleButton, TextBox,
+  Container, ContainerTitle, NameMarket, FavButton, TextTitle,
+  ImgCarousel, ContainerMarket, ContainerList, ContainerAdress, TextAdress,
+  Adress, ContainerDropdown, ScheduleButton, TextBox,
 } from './styles';
+
+import StatusBar from '../../components/StatusBar';
 
 export default function Booking() {
   const [liked, setLiked] = useState(false);
