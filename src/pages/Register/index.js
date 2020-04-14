@@ -1,7 +1,8 @@
 import React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { TextInput } from 'react-native-paper';
 
-import { Container, } from './styles';
+import { Container, Form } from './styles';
 
 const TopTab = createMaterialTopTabNavigator();
 
@@ -17,7 +18,13 @@ function MyTabs() {
 export default function Register() {
   return (
     <Container>
-
+      <Form>
+        <TextInput
+          label='Email'
+          mode='outlined'
+          selectionColor='red'
+        />
+      </Form>
     </Container>
   )
 }
