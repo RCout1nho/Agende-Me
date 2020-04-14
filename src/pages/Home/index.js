@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image, Text } from 'react-native';
 
+import SvgUri from 'react-native-svg-uri';
+
 import {
   Container, CardContainer, LogoContainer, CardLogo,
   CardTitle, CardTitleText, CardDescription, CardDescriptionText,
