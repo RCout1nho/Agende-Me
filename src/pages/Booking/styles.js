@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Image, Text, } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -83,7 +84,7 @@ export const TextAdress = styled.Text`
   text-align: left;
 `;
 
-export const Text = styled.Text`
+export const TextBox = styled.Text`
   color: #fff;
   text-align: center;
 `;

@@ -4,10 +4,10 @@ import { Dropdown } from 'react-native-material-dropdown';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import {
-  Container, StatusBar, ContainerTitle, NameMarket, FavButton, TextTitle, ImgCarousel, ContainerMarket, ContainerList, ContainerAdress, TextAdress, Adress, ContainerDropdown, ScheduleButton, Text
+  Container, StatusBar, ContainerTitle, NameMarket, FavButton, TextTitle, ImgCarousel, ContainerMarket, ContainerList, ContainerAdress, TextAdress, Adress, ContainerDropdown, ScheduleButton, TextBox,
 } from './styles';
 
-export default function Booking(handleLike) {
+export default function Booking() {
   const [liked, setLiked] = useState(false);
 
   function handleLike() {
@@ -31,9 +31,6 @@ export default function Booking(handleLike) {
   return (
     <Container>
       <StatusBar />
-      <ImgCarousel>
-
-      </ImgCarousel>
       <ContainerMarket>
         <ContainerTitle>
           <NameMarket>
@@ -89,9 +86,9 @@ export default function Booking(handleLike) {
               })}
             />
             <ScheduleButton>
-              <Text>
+              <TextBox>
                 Schedule
-              </Text>
+              </TextBox>
             </ScheduleButton>
           </ContainerDropdown>
         </ContainerList>
