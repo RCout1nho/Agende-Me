@@ -6,10 +6,6 @@ export const Container = styled.View`
   justify-content: space-between;
 `;
 
-export const ImgCarousel = styled.Image`
-  height:300px;
-`;
-
 export const ContainerMarket = styled.View`
   background: #F6F5F5;
   height: 532px;

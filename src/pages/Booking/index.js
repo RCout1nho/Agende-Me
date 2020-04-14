@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { Image } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 
 import { MaterialIcons } from '@expo/vector-icons';
 
 import {
-  Container, ContainerTitle, NameMarket, FavButton, TextTitle,
-  ImgCarousel, ContainerMarket, ContainerList, ContainerAdress, TextAdress,
+  Container, ContainerTitle, NameMarket, FavButton, TextTitle, ContainerMarket, ContainerList, ContainerAdress, TextAdress,
   Adress, ContainerDropdown, ScheduleButton, TextBox,
 } from './styles';
 
 import StatusBar from '../../components/StatusBar';
+import extra from '../../assets/extra.png';
 
 export default function Booking() {
   const [liked, setLiked] = useState(false);
@@ -34,7 +35,8 @@ export default function Booking() {
 
   return (
     <Container>
-      <ImgCarousel />
+      <StatusBar />
+      <Image source={extra} style={{ width: '100%' }} />
       <ContainerMarket>
         <ContainerTitle>
           <NameMarket>
