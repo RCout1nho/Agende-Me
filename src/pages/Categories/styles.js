@@ -14,7 +14,7 @@ export const Container = styled.View`
 
 export const HeadLogo = styled.Image`
   align-self: center;
-  margin-top: 10px;
+  margin: 10px 0px;
 `;
 
 export const Title = styled(Headline)`
@@ -30,7 +30,7 @@ export const TitleContainer = styled.View`
 export const ShowPlacesContainer = styled.TouchableOpacity`
   align-self: center;
   margin-top: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 `;
 
 export const ShowPlacesText = styled(Paragraph)`

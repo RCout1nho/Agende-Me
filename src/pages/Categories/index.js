@@ -1,25 +1,50 @@
-import React, { useState } from 'react';
-import { Image, FlatList } from 'react-native';
+import React from 'react';
+import { FlatList } from 'react-native';
 
 import {
   Container, StatusBar, HeadLogo, Title,
-  TitleContainer, ShowPlacesText, ShowPlacesContainer
+  TitleContainer, ShowPlacesText, ShowPlacesContainer, HeadLogoContainer
 } from './styles';
 
 import SearchBar from '../../components/SearchBar';
+import Card from '../../components/Card';
 
 import logo from '../../assets/logo-S.png';
-import carrefour from '../../assets/carrefour.png';
-import clock from '../../assets/clock-S.png';
-
-function Card({ name, limite }) {
-  return (
-    <></>
-  )
-}
-
 
 export default function Categories() {
+  const mercados = [
+    {
+      name: 'TESTE',
+      available: true,
+      id: 1,
+      haveImage: true
+    },
+    {
+      name: 'Carrefour',
+      available: false,
+      id: 2,
+      haveImage: true
+    },
+    {
+      name: 'Atack',
+      available: true,
+      id: 3,
+      haveImage: true
+    },
+    {
+      name: 'Big Amigão',
+      available: true,
+      id: 4,
+      haveImage: true
+    },
+    {
+      name: 'Assaí',
+      available: true,
+      id: 5,
+      haveImage: true
+    }
+  ];
+
   return (
     <Container>
       <StatusBar />
@@ -30,20 +55,18 @@ export default function Categories() {
         <Title>Supermercados</Title>
       </TitleContainer>
 
-      <SearchBar placeholder="Pesquise um estabelecimento" />
+      <SearchBar placeholder="Pesquise um estabelecimento" marginTop={20} />
       <ShowPlacesContainer activeOpacity={0.5} >
         <ShowPlacesText>Ver locais próximos</ShowPlacesText>
       </ShowPlacesContainer>
 
-      {/* <FlatList
+      <FlatList
         data={mercados}
         renderItem={({ item }) => (
-          <Card name={item.name} limite={item.limite} />
+          <Card name={item.name} available={item.available} haveImage={item.haveImage} onPressLike={() => { }} />
         )}
         keyExtractor={item => String(item.id)}
-      /> */}
-
-      <Card />
+      />
 
 
     </Container>
