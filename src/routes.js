@@ -68,7 +68,10 @@ function Tabs() {
 export default function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{
+        headerStyle: { backgroundColor: '#F6F5F5', elevation: 0 },
+
+      }} >
         <Stack.Screen name="Welcome" component={Welcome} options={{ headerShown: false }} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
