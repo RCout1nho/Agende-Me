@@ -10,6 +10,7 @@ export const StatusBar = styled.View`
 
 export const Container = styled.View`
   flex: 1;
+  background: #F6F5F5;
 `;
 
 export const HeadLogo = styled.Image`

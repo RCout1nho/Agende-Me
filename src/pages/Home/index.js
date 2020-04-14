@@ -4,7 +4,7 @@ import { Image, Text } from 'react-native';
 import {
   Container, CardContainer, LogoContainer, CardLogo,
   CardTitle, CardTitleText, CardDescription, CardDescriptionText,
-  BtnBook, BtnBookText
+  BtnRegister, BtnRegisterText, BtnLogin, BtnLoginText
 } from './styles';
 
 import background from '../../assets/background.png';
@@ -27,9 +27,13 @@ export default function Home() {
           <CardDescriptionText>When placing an order, select the option “Contactless delivery” and
             the courier will leave your order at the door.</CardDescriptionText>
         </CardDescription>
-        <BtnBook activeOpacity={0.8}>
-          <BtnBookText>BOOK NOW</BtnBookText>
-        </BtnBook>
+        <BtnRegister activeOpacity={0.8}>
+          <BtnRegisterText>REGISTER</BtnRegisterText>
+        </BtnRegister>
+
+        <BtnLogin activeOpacity={0.8}>
+          <BtnLoginText>LOGIN</BtnLoginText>
+        </BtnLogin>
       </CardContainer>
     </Container>
   )
