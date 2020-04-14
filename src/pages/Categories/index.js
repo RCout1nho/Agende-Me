@@ -1,8 +1,9 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 
+import StatusBar from '../../components/StatusBar';
 import {
-  Container, StatusBar, HeadLogo, Title,
+  Container, HeadLogo, Title,
   TitleContainer, ShowPlacesText, ShowPlacesContainer, HeadLogoContainer
 } from './styles';
 

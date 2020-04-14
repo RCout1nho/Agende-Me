@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Text } from 'react-native';
+import { Image, Text, } from 'react-native';
 
 import {
   Container, CardContainer, LogoContainer, CardLogo,
@@ -8,7 +8,7 @@ import {
 } from './styles';
 
 import background from '../../assets/background.png';
-import logo from '../../assets/logo-B.png';
+import logo from '../../assets/logo-G.png';
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
       </LogoContainer>
       <CardContainer >
         <CardLogo>
-          <Image source={logo} />
+          <Image source={logo} style={{ width: 138, height: 138 }} />
         </CardLogo>
         <CardTitle>
           <CardTitleText>Book your shopping</CardTitleText>
