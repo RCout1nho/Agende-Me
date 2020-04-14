@@ -4,7 +4,7 @@ import { Dropdown } from 'react-native-material-dropdown';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import {
-  Container, StatusBar, ContainerTitle, NameMarket, FavButton, TextTitle, ImgCarousel, ContainerMarket, ContainerList, ContainerAdress, TextAdress, Adress, ContainerDropdown, ScheduleButton, TextBox,
+  Container, ContainerTitle, NameMarket, FavButton, TextTitle, ImgCarousel, ContainerMarket, ContainerList, ContainerAdress, TextAdress, Adress, ContainerDropdown, ScheduleButton, TextBox,
 } from './styles';
 
 export default function Booking() {
@@ -26,11 +26,11 @@ export default function Booking() {
     value: '5',
   }, {
     value: '6',
-  },];
+  }];
 
   return (
     <Container>
-      <StatusBar />
+      <ImgCarousel />
       <ContainerMarket>
         <ContainerTitle>
           <NameMarket>
