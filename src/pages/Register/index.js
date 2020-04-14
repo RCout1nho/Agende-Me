@@ -3,10 +3,10 @@ import { Text } from 'react-native';
 
 import { Container } from './styles';
 
-export default function Login() {
+export default function Register() {
   return (
     <Container>
-      <Text>Login</Text>
+      <Text>Register</Text>
     </Container>
   )
 }
