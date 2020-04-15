@@ -1,13 +1,17 @@
 import React, { useState, useReducer, useContext } from 'react';
-import { View } from 'react-native';
+import { YellowBox } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { useRoute } from '@react-navigation/native';
 import { TextInput } from 'react-native-paper';
 
 import {
   Container, Form, SubmitBtn, SubmitText, SectionTitle,
   AddressContainer, Address1, Address2, Content
 } from './styles';
+
+YellowBox.ignoreWarnings([
+  'Non-serializable values were found in the navigation state'
+])
+
 const TopTab = createMaterialTopTabNavigator();
 
 const theme = {
