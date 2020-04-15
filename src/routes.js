@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
 
 import Welcome from './pages/Welcome';
 import Places from './pages/Places';
@@ -13,6 +13,7 @@ import Ticket from './pages/Ticket';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Categories from './pages/Categories';
 
 import grid from './assets/grid.png';
 
@@ -21,30 +22,25 @@ const Stack = createStackNavigator();
 
 
 function Tabs({ route }) {
-  const { username, password } = route.params;
+  const { email, password, name, _id } = route.params;
 
   return (
     <Tab.Navigator
       activeColor="#000"
       barStyle={{
         backgroundColor: '#F8F8F8',
-        elevation: 1
+        elevation: 5
       }}
       sceneAnimationEnabled={false}
     >
-      <Tab.Screen name="Schedule" component={Schedule} options={{
-        tabBarIcon: ({ color }) => (
-          <MaterialIcons name="lock" size={24} color={color} />
-        )
-      }} />
-      <Tab.Screen name="Places" component={Places} options={{
+      {/* <Tab.Screen name="Places" component={Places} options={{
         tabBarIcon: ({ color }) => (
           <MaterialIcons name="place" size={24} color={color} />
         )
-      }} />
-      <Tab.Screen name="Ticket" component={Ticket} options={{
+      }} /> */}
+      <Tab.Screen name="Categories" component={Categories} options={{
         tabBarIcon: ({ color }) => (
-          <MaterialIcons name="lock" size={24} color={color} />
+          <Entypo name="grid" size={24} color={color} />
         )
       }} />
       <Tab.Screen name="Profile" component={Profile} options={{
@@ -52,7 +48,7 @@ function Tabs({ route }) {
           <MaterialIcons name="account-circle" size={25} color={color} />
         )
       }}
-        initialParams={{ AuthContext, username, password }}
+        initialParams={{ AuthContext, email, password, name, _id }}
       />
     </Tab.Navigator>
   )
@@ -76,16 +72,20 @@ export default function Routes() {
             ...prevState,
             isSignout: false,
             userToken: action.token,
-            username: action.username,
-            password: action.password
+            email: action.email,
+            password: action.password,
+            _id: action._id,
+            name: action.name
           };
         case 'SIGN_OUT':
           return {
             ...prevState,
             isSignout: true,
             userToken: null,
-            username: null,
-            password: null
+            email: null,
+            password: null,
+            _id: null,
+            name: null
           };
       }
     },
@@ -93,8 +93,10 @@ export default function Routes() {
       isLoading: true,
       isSignout: false,
       userToken: null,
-      username: null,
-      password: null
+      email: null,
+      password: null,
+      _id: null,
+      name: null
     }
   );
 
@@ -117,7 +119,7 @@ export default function Routes() {
     () => ({
       signIn: async data => {
 
-        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token', password: data.password, username: data.username });
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token', password: data.password, email: data.email, name: data.name, _id: data._id });
       },
       signOut: () => dispatch({ type: 'SIGN_OUT' }),
       signUp: async data => {
@@ -154,7 +156,7 @@ export default function Routes() {
               />
             </>
             :
-            <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} initialParams={{ username: state.username, password: state.password }} />
+            <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} initialParams={{ email: state.email, password: state.password, name: state.name, _id: state._id }} />
           }
         </Stack.Navigator>
       </NavigationContainer>

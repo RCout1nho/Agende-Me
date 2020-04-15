@@ -26,7 +26,7 @@ function Card({ name, iconName, Iconcolor, onPress }) {
 }
 
 export default function Profile({ route }) {
-  const { AuthContext, username, password } = route.params;
+  const { AuthContext, email, password, name, _id } = route.params;
 
   const { signOut } = useContext(AuthContext);
 
@@ -35,7 +35,7 @@ export default function Profile({ route }) {
   }
 
   function ticket() {
-    console.log(username, password);
+    console.log(email, password, name, _id);
   }
 
   return (
@@ -47,11 +47,11 @@ export default function Profile({ route }) {
           <MaterialIcons name="account-circle" size={50} color="#3BC365" />
         </IconContainer>
         <OptionNameContainer>
-          <CardText>Nelson Fernandes</CardText>
+          <CardText>{name}</CardText>
         </OptionNameContainer>
       </UsernameCard>
 
-      <ScrollView>
+      <ScrollView >
         <OptionsCard>
           <Card name="Tickets" iconName="history" Iconcolor="#3BC365" onPress={ticket} />
           <Card name="Favorites" iconName="favorite-border" Iconcolor="#3BC365" />

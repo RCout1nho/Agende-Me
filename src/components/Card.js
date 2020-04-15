@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import logo from '../assets/carrefour.png';
-
 export default function Card({ name = "Sem nome", available = true, brand, id, onPressLike, onPressSchedule, haveImage }) {
   const [liked, setLiked] = useState(false);
 
@@ -15,7 +13,7 @@ export default function Card({ name = "Sem nome", available = true, brand, id, o
     <TouchableOpacity style={styles.container} activeOpacity={0.7} >
       <View style={styles.brand} >
         {haveImage ?
-          <Image source={logo} style={{ width: '100%', height: '100%' }} /> :
+          <Image source={{ uri: brand }} style={{ width: '100%', height: '100%' }} /> :
           <View style={styles.noPosterContainer} >
             <MaterialIcons name="broken-image" size={40} color="#BEBEBE" />
             <Text style={styles.noPoster} >No Poster</Text>

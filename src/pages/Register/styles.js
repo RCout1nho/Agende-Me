@@ -19,6 +19,7 @@ export const SubmitBtn = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   align-self: center;
+  elevation: 3;
 `;
 
 export const SubmitText = styled.Text`

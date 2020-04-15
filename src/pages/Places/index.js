@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
 import StatusBar from '../../components/StatusBar';
@@ -12,7 +12,21 @@ import Card from '../../components/Card';
 
 import logo from '../../assets/logo-S.png';
 
+import api from '../../services/api';
+
 export default function Places() {
+  const [places, setPlaces] = useState([]);
+
+  useEffect(() => {
+    async function apiGet() {
+      const response = await api.get('/company');
+
+      setPlaces(response.data);
+    }
+
+    apiGet();
+  }, []);
+
   const mercados = [
     {
       name: 'TESTE',
@@ -62,9 +76,9 @@ export default function Places() {
       </ShowPlacesContainer>
 
       <FlatList
-        data={mercados}
+        data={places}
         renderItem={({ item }) => (
-          <Card name={item.name} available={item.available} haveImage={item.haveImage} onPressLike={() => { }} />
+          <Card name={item.name} available={item.available} brand={item.photo_url} haveImage={item.haveImage} onPressLike={() => { }} />
         )}
         keyExtractor={item => String(item.id)}
       />
