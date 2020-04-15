@@ -19,7 +19,7 @@ export const ImageContainer = styled.View`
 
 export const ContainerMarket = styled.View`
   background: #F6F5F5;
-  height: 450px;
+  height: 410px;
   z-index: 1;
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
