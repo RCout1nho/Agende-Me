@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ScrollView } from 'react-native';
 
@@ -25,12 +25,26 @@ function Card({ name, iconName, Iconcolor, onPress }) {
   )
 }
 
-export default function Profile() {
+export default function Profile({ route }) {
+  const AuthContext = route.params.AuthContext;
+
+  const { signOut, state } = useContext(AuthContext);
+
+  console.log(state);
+
+  function press() {
+    signOut();
+  }
+
+  function ticket() {
+
+  }
+
   return (
     <Container>
       <StatusBar />
       <HeaderTitle>Profile</HeaderTitle>
-      <UsernameCard activeOpacity={0.5}>
+      <UsernameCard activeOpacity={0.5} onPress={press} >
         <IconContainer>
           <MaterialIcons name="account-circle" size={50} color="#3BC365" />
         </IconContainer>
@@ -41,7 +55,7 @@ export default function Profile() {
 
       <OptionsCard>
         <ScrollView>
-          <Card name="Tickets" iconName="history" Iconcolor="#3BC365" />
+          <Card name="Tickets" iconName="history" Iconcolor="#3BC365" onPress={ticket} />
           <Card name="Favorites" iconName="favorite-border" Iconcolor="#3BC365" />
           <Card name="Settings" iconName="settings" Iconcolor="#3BC365" />
           <Card name="Privacy" iconName="security" Iconcolor="#3BC365" />

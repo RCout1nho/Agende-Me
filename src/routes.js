@@ -1,5 +1,5 @@
-import React from 'react';
-import { Image } from 'react-native';
+import React, { useReducer, useEffect, useMemo, createContext } from 'react';
+import { Image, AsyncStorage } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -14,12 +14,11 @@ import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
-import clock from './assets/clock.png';
 import grid from './assets/grid.png';
-import user from './assets/user.png';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
+
 
 function Tabs() {
   return (
@@ -31,7 +30,7 @@ function Tabs() {
       }}
       sceneAnimationEnabled={false}
     >
-      <Tab.Screen name="Home" component={Home} options={{
+      <Tab.Screen name="Welcome" component={Welcome} options={{
         tabBarIcon: () => (
           <Image source={grid} />
         )
@@ -55,41 +54,109 @@ function Tabs() {
         tabBarIcon: ({ color }) => (
           <MaterialIcons name="lock" size={24} color={color} />
         )
-      }} />
-      <Tab.Screen name="Login" component={Login} options={{
-        tabBarIcon: ({ color }) => (
-          <MaterialIcons name="lock" size={24} color={color} />
-        )
-      }} />
+      }}
+        initialParams={{ AuthContext }}
+      />
     </Tab.Navigator>
   )
 }
 
-export default function Routes() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{
-        headerStyle: { backgroundColor: '#F6F5F5', elevation: 0 }
-      }} >
-        <Stack.Screen
-          name="Welcome"
-          component={Welcome}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={Login}
-        />
-        <Stack.Screen
-          name="Register"
-          component={Register}
-          options={{
+const AuthContext = createContext();
 
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+export default function Routes() {
+
+  const [state, dispatch] = useReducer(
+    (prevState, action) => {
+      switch (action.type) {
+        case 'RESTORE_TOKEN':
+          return {
+            ...prevState,
+            userToken: action.token,
+            isLoading: false,
+          };
+        case 'SIGN_IN':
+          return {
+            ...prevState,
+            isSignout: false,
+            userToken: action.token,
+          };
+        case 'SIGN_OUT':
+          return {
+            ...prevState,
+            isSignout: true,
+            userToken: null,
+          };
+      }
+    },
+    {
+      isLoading: true,
+      isSignout: false,
+      userToken: null,
+    }
+  );
+
+  useEffect(() => {
+    const bootstrapAsync = async () => {
+      let userToken;
+
+      try {
+        userToken = await AsyncStorage.getItem('userToken');
+      } catch (e) {
+
+      }
+      dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+    };
+
+    bootstrapAsync();
+  }, []);
+
+  const authContext = useMemo(
+    () => ({
+      signIn: async data => {
+
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+      },
+      signOut: () => dispatch({ type: 'SIGN_OUT' }),
+      signUp: async data => {
+
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+      },
+    }),
+    []
+  );
+  return (
+    <AuthContext.Provider value={authContext} >
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{
+          headerStyle: { backgroundColor: '#F8F8F8', elevation: 0 }
+        }} >
+          {state.userToken == null ?
+            <>
+              <Stack.Screen
+                name="Welcome"
+                component={Welcome}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="Login"
+                component={Login}
+                initialParams={{ AuthContext }}
+              />
+              <Stack.Screen
+                name="Register"
+                component={Register}
+                options={{
+
+                }}
+              />
+            </>
+            :
+            <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} />
+          }
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AuthContext.Provider>
   )
 }

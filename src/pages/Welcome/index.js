@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 
@@ -14,6 +14,12 @@ import logo from '../../assets/logo-G.png';
 
 export default function Welcome() {
   const navigation = useNavigation();
+
+
+  useEffect(() => {
+
+  }, []);
+
 
   function goToLogin() {
     navigation.navigate("Login");
