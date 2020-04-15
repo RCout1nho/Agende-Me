@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <Container>
       <LogoContainer>
-        <Image source={background} style={{ width: '100%' }} />
+        <Image source={background} style={{ width: '100%', borderColor: 'red', borderWidth: 1 }} />
       </LogoContainer>
       <CardContainer >
         <CardLogo>
