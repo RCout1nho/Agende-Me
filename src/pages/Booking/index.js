@@ -70,7 +70,7 @@ export default function Booking() {
               containerStyle={({
                 borderRadius: 13,
                 height: 56,
-                marginBottom: 10,
+                marginTop: 21,
                 backgroundColor: '#FFFFFF',
                 justifyContent: "center",
                 paddingLeft: 10
@@ -85,7 +85,7 @@ export default function Booking() {
               containerStyle={({
                 borderRadius: 13,
                 height: 56,
-                marginBottom: 10,
+                marginTop: 21,
                 backgroundColor: '#FFFFFF',
                 justifyContent: "center",
                 paddingLeft: 10
