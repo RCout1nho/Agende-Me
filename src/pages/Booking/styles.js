@@ -6,9 +6,21 @@ export const Container = styled.View`
   justify-content: space-between;
 `;
 
+export const Content = styled.View`
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+` ;
+
+export const ImageContainer = styled.View`
+  height: 250px;
+  align-items: center;
+`;
+
 export const ContainerMarket = styled.View`
   background: #F6F5F5;
-  height: 532px;
+  height: 450px;
+  z-index: 1;
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
   elevation: 20;
