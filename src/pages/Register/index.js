@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { ScrollView, View, Keyboard, AsyncStorage } from 'react-native'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TextInput } from 'react-native-paper';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import {
   Container, Form, SubmitBtn, SubmitText, SectionTitle,
@@ -17,12 +16,8 @@ const theme = {
 
 const TopTab = createMaterialTopTabNavigator();
 
-
-function User() {
-  const { signIn } = useContext(AuthContext);
-  const username = "Ricardo";
-  const password = "123";
-
+function User({ route }) {
+  const { token } = route.params;
   return (
     <Form>
       <TextInput
@@ -53,8 +48,8 @@ function User() {
         theme={theme}
         style={{ marginVertical: 15 }}
       />
-      <SubmitBtn onPress={() => signIn({ username, password })} >
-        <SubmitText>REGISTER</SubmitText>
+      <SubmitBtn onPress={() => { console.log(token) }} >
+        <SubmitText >REGISTER</SubmitText>
       </SubmitBtn>
     </Form>
   )
@@ -154,7 +149,7 @@ function Company() {
   )
 }
 
-function MyTabs() {
+function MyTabs({ token }) {
   return (
     <TopTab.Navigator tabBarOptions={{
       style: {
@@ -164,16 +159,17 @@ function MyTabs() {
         backgroundColor: '#3BC365'
       }
     }} >
-      <TopTab.Screen name="User" component={User} />
+      <TopTab.Screen name="User" component={User} initialParams={{ token }} />
       <TopTab.Screen name="Company" component={Company} />
     </TopTab.Navigator>
   )
 }
 
-export default function Register() {
+export default function Register({ route }) {
+  const { token } = route.params;
   return (
     <Container>
-      <MyTabs />
+      <MyTabs token={token} />
     </Container>
   )
 }

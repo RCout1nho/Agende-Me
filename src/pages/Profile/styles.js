@@ -40,7 +40,7 @@ export const CardText = styled.Text`
 export const OptionsCard = styled.View`
   background: #fff;
   width: 90%;
-  height: 90%;
+  height: 100%;
   border-radius: 10px;
   align-self: center;
   elevation: 10;

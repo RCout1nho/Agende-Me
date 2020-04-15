@@ -26,25 +26,23 @@ function Card({ name, iconName, Iconcolor, onPress }) {
 }
 
 export default function Profile({ route }) {
-  const AuthContext = route.params.AuthContext;
+  const { AuthContext, username, password } = route.params;
 
-  const { signOut, state } = useContext(AuthContext);
+  const { signOut } = useContext(AuthContext);
 
-  console.log(state);
-
-  function press() {
+  function logout() {
     signOut();
   }
 
   function ticket() {
-
+    console.log(username, password);
   }
 
   return (
     <Container>
       <StatusBar />
       <HeaderTitle>Profile</HeaderTitle>
-      <UsernameCard activeOpacity={0.5} onPress={press} >
+      <UsernameCard activeOpacity={0.5}>
         <IconContainer>
           <MaterialIcons name="account-circle" size={50} color="#3BC365" />
         </IconContainer>
@@ -53,15 +51,16 @@ export default function Profile({ route }) {
         </OptionNameContainer>
       </UsernameCard>
 
-      <OptionsCard>
-        <ScrollView>
+      <ScrollView>
+        <OptionsCard>
           <Card name="Tickets" iconName="history" Iconcolor="#3BC365" onPress={ticket} />
           <Card name="Favorites" iconName="favorite-border" Iconcolor="#3BC365" />
           <Card name="Settings" iconName="settings" Iconcolor="#3BC365" />
           <Card name="Privacy" iconName="security" Iconcolor="#3BC365" />
           <Card name="FAQ" iconName="book" Iconcolor="#3BC365" />
-        </ScrollView>
-      </OptionsCard>
+          <Card name="Logout" iconName="settings-power" Iconcolor="#3BC365" onPress={logout} />
+        </OptionsCard>
+      </ScrollView>
     </Container>
   )
 }

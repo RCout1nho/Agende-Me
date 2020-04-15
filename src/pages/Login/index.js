@@ -16,17 +16,20 @@ const theme = {
   }
 }
 
-let AuthContext;
-
-function User() {
+function User({ route }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const { AuthContext } = route.params;
 
   const { signIn } = useContext(AuthContext);
 
   function submit() {
-    signIn({ username, password });
+    if (username == "ricardo" && password == "123") {
+      signIn({ username, password });
+    } else {
+      console.log("Se fudeu");
+    }
   }
 
   return (
@@ -82,7 +85,7 @@ function Company() {
   )
 }
 
-function MyTabs() {
+function MyTabs({ AuthContext }) {
   return (
     <TopTab.Navigator tabBarOptions={{
       style: {
@@ -92,17 +95,18 @@ function MyTabs() {
         backgroundColor: '#3BC365'
       }
     }} >
-      <TopTab.Screen name="User" component={User} />
+      <TopTab.Screen name="User" component={User} initialParams={{ AuthContext }} />
       <TopTab.Screen name="Company" component={Company} />
     </TopTab.Navigator>
   )
 }
 
 export default function Login({ route }) {
-  AuthContext = route.params.AuthContext;
+  const { AuthContext } = route.params;
+
   return (
     <Container>
-      <MyTabs />
+      <MyTabs AuthContext={AuthContext} />
     </Container>
   )
 }

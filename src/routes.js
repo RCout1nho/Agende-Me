@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, useMemo, createContext } from 'react';
 import { Image, AsyncStorage } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -20,7 +20,9 @@ const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
-function Tabs() {
+function Tabs({ route }) {
+  const { username, password } = route.params;
+
   return (
     <Tab.Navigator
       activeColor="#000"
@@ -55,7 +57,7 @@ function Tabs() {
           <MaterialIcons name="lock" size={24} color={color} />
         )
       }}
-        initialParams={{ AuthContext }}
+        initialParams={{ AuthContext, username, password }}
       />
     </Tab.Navigator>
   )
@@ -79,12 +81,16 @@ export default function Routes() {
             ...prevState,
             isSignout: false,
             userToken: action.token,
+            username: action.username,
+            password: action.password
           };
         case 'SIGN_OUT':
           return {
             ...prevState,
             isSignout: true,
             userToken: null,
+            username: null,
+            password: null
           };
       }
     },
@@ -92,6 +98,8 @@ export default function Routes() {
       isLoading: true,
       isSignout: false,
       userToken: null,
+      username: null,
+      password: null
     }
   );
 
@@ -114,7 +122,7 @@ export default function Routes() {
     () => ({
       signIn: async data => {
 
-        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token', password: data.password, username: data.username });
       },
       signOut: () => dispatch({ type: 'SIGN_OUT' }),
       signUp: async data => {
@@ -147,13 +155,11 @@ export default function Routes() {
               <Stack.Screen
                 name="Register"
                 component={Register}
-                options={{
-
-                }}
+                initialParams={{ token: state.userToken }}
               />
             </>
             :
-            <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} />
+            <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} initialParams={{ username: state.username, password: state.password }} />
           }
         </Stack.Navigator>
       </NavigationContainer>
