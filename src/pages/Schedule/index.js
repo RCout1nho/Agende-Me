@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { Image } from 'react-native';
+import { Image, YellowBox } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 
 import { MaterialIcons } from '@expo/vector-icons';
+
+YellowBox.ignoreWarnings([
+  'componentWillUpdate has been renamed',
+  'componentWillReceiveProps has been renamed'
+])
 
 import {
   Container, ContainerTitle, NameMarket, FavButton, TextTitle, ContainerMarket, ContainerList, ContainerAdress, TextAdress,
@@ -12,7 +17,7 @@ import {
 import StatusBar from '../../components/StatusBar';
 import extra from '../../assets/extra.png';
 
-export default function Booking() {
+export default function Shedule() {
   const [liked, setLiked] = useState(false);
 
   function handleLike() {

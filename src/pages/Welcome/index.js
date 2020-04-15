@@ -1,5 +1,6 @@
-import React from 'react';
-import { Image, Text, } from 'react-native';
+import React, { useEffect } from 'react';
+import { Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
 import {
   Container, CardContainer, LogoContainer, CardLogo,
@@ -10,7 +11,24 @@ import {
 import background from '../../assets/background.png';
 import logo from '../../assets/logo-G.png';
 
-export default function Home() {
+
+export default function Welcome() {
+  const navigation = useNavigation();
+
+
+  useEffect(() => {
+
+  }, []);
+
+
+  function goToLogin() {
+    navigation.navigate("Login");
+  }
+
+  function goToRegister() {
+    navigation.navigate("Register");
+  }
+
   return (
     <Container>
       <LogoContainer>
@@ -27,11 +45,11 @@ export default function Home() {
           <CardDescriptionText>When placing an order, select the option “Contactless delivery” and
             the courier will leave your order at the door.</CardDescriptionText>
         </CardDescription>
-        <BtnRegister activeOpacity={0.8}>
+        <BtnRegister activeOpacity={0.8} onPress={goToRegister} >
           <BtnRegisterText>REGISTER</BtnRegisterText>
         </BtnRegister>
 
-        <BtnLogin activeOpacity={0.8}>
+        <BtnLogin activeOpacity={0.8} onPress={goToLogin} >
           <BtnLoginText>LOGIN</BtnLoginText>
         </BtnLogin>
       </CardContainer>

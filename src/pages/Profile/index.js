@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ScrollView } from 'react-native';
 
@@ -25,7 +25,19 @@ function Card({ name, iconName, Iconcolor, onPress }) {
   )
 }
 
-export default function Profile() {
+export default function Profile({ route }) {
+  const { AuthContext, username, password } = route.params;
+
+  const { signOut } = useContext(AuthContext);
+
+  function logout() {
+    signOut();
+  }
+
+  function ticket() {
+    console.log(username, password);
+  }
+
   return (
     <Container>
       <StatusBar />
@@ -39,15 +51,16 @@ export default function Profile() {
         </OptionNameContainer>
       </UsernameCard>
 
-      <OptionsCard>
-        <ScrollView>
-          <Card name="Tickets" iconName="history" Iconcolor="#3BC365" />
+      <ScrollView>
+        <OptionsCard>
+          <Card name="Tickets" iconName="history" Iconcolor="#3BC365" onPress={ticket} />
           <Card name="Favorites" iconName="favorite-border" Iconcolor="#3BC365" />
           <Card name="Settings" iconName="settings" Iconcolor="#3BC365" />
           <Card name="Privacy" iconName="security" Iconcolor="#3BC365" />
           <Card name="FAQ" iconName="book" Iconcolor="#3BC365" />
-        </ScrollView>
-      </OptionsCard>
+          <Card name="Logout" iconName="settings-power" Iconcolor="#3BC365" onPress={logout} />
+        </OptionsCard>
+      </ScrollView>
     </Container>
   )
 }

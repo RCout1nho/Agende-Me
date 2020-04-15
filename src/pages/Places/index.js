@@ -12,7 +12,7 @@ import Card from '../../components/Card';
 
 import logo from '../../assets/logo-S.png';
 
-export default function Categories() {
+export default function Places() {
   const mercados = [
     {
       name: 'TESTE',
