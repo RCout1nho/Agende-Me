@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
-import { YellowBox, View } from 'react-native';
+import { YellowBox, View, Image, KeyboardAvoidingView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TextInput } from 'react-native-paper';
 import Dialog from 'react-native-dialog';
 
 import api from '../../services/api';
+import logo from '../../assets/logo-S.png';
 
 import {
-  Container, Form, SubmitBtn, SubmitText, SectionTitle,
-  AddressContainer, Address1, Address2, Content
+  Container, Form, SubmitBtn, SubmitText, Content
 } from './styles';
 
 YellowBox.ignoreWarnings([
@@ -66,41 +66,42 @@ function User({ route }) {
   }
 
   return (
-    <Form >
-      <MyDialog />
-
-      <TextInput
-        label='Email'
-        mode='outlined'
-        underlineColor='#3BC365'
-        theme={theme}
-        style={{ marginVertical: 15 }}
-        onChangeText={text => setEmail(text)}
-        value={email}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      <TextInput
-        label='Senha'
-        mode='outlined'
-        underlineColor='#3BC365'
-        theme={theme}
-        style={{ marginVertical: 15 }}
-        onChangeText={text => setPassword(text)}
-        value={password}
-        autoCapitalize="none"
-        secureTextEntry
-      />
-      <SubmitBtn onPress={submit} >
-        <SubmitText>LOGIN</SubmitText>
-      </SubmitBtn>
-    </Form>
+    <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior="padding" >
+      <Form >
+        <MyDialog />
+        <TextInput
+          label='Email'
+          mode='outlined'
+          underlineColor='#3BC365'
+          theme={theme}
+          style={{ marginVertical: 15 }}
+          onChangeText={text => setEmail(text)}
+          value={email}
+          keyboardType="email-address"
+          autoCapitalize="none"
+        />
+        <TextInput
+          label='Senha'
+          mode='outlined'
+          underlineColor='#3BC365'
+          theme={theme}
+          style={{ marginVertical: 15 }}
+          onChangeText={text => setPassword(text)}
+          value={password}
+          autoCapitalize="none"
+          secureTextEntry
+        />
+        <SubmitBtn onPress={submit} >
+          <SubmitText>LOGIN</SubmitText>
+        </SubmitBtn>
+      </Form>
+    </KeyboardAvoidingView>
   )
 }
 
 function Company() {
   return (
-    <Content>
+    <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior="padding">
       <Form >
         <TextInput
           label='Email'
@@ -120,7 +121,7 @@ function Company() {
           <SubmitText>LOGIN</SubmitText>
         </SubmitBtn>
       </Form>
-    </Content>
+    </KeyboardAvoidingView >
   )
 }
 

@@ -5,10 +5,11 @@ export const Container = styled.View`
   background: #F6F5F5;
 `;
 
-export const Form = styled.KeyboardAvoidingView`
+export const Form = styled.View`
   padding: 0px 20px;
-  align-self: center;
   width: 90%;
+  flex-direction: column;
+  margin: auto;
 `;
 
 export const SubmitBtn = styled.TouchableOpacity`

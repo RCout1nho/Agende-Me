@@ -33,27 +33,3 @@ export const SubmitText = styled.Text`
   font-size: 18px;
   font-weight: bold;
 `;
-
-export const SectionTitle = styled.Text`
-  color: #2D0C57;
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0px;
-`;
-
-export const AddressContainer = styled.View`
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-export const Address1 = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-export const Address2 = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-`;

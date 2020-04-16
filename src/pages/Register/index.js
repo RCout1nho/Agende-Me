@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native'
+import { View, KeyboardAvoidingView, ScrollView } from 'react-native'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TextInput, HelperText } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
@@ -76,165 +76,173 @@ function User({ route }) {
   }
 
   return (
-    <Form >
-      <MyDialog />
+    <KeyboardAvoidingView style={{ flex: 1 }} >
+      <ScrollView style-={{ flex: 1 }} >
+        <Form >
+          <MyDialog />
 
-      <View style={{ marginTop: 20, marginBottom: 5 }} >
-        <TextInput
-          label='Nome'
-          mode='outlined'
-          theme={{ colors: { primary: wrongName ? '#FF5252' : '#3BC365' } }}
-          onChangeText={text => setName(text)}
-          value={name}
-          autoCapitalize="words"
-        />
-        <HelperText type="error" visible={wrongName} >
-          Senhas não coincidem
+          <View style={{ marginTop: 20, marginBottom: 5 }} >
+            <TextInput
+              label='Nome'
+              mode='outlined'
+              theme={{ colors: { primary: wrongName ? '#FF5252' : '#3BC365' } }}
+              onChangeText={text => setName(text)}
+              value={name}
+              autoCapitalize="words"
+            />
+            <HelperText type="error" visible={wrongName} >
+              Senhas não coincidem
       </HelperText>
-      </View>
-      <View style={{ marginVertical: 5 }}>
-        <TextInput
-          label='Email'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={{ colors: { primary: wrongEmail ? '#FF5252' : '#3BC365' } }}
-          onChangeText={text => setEmail(text)}
-          value={email}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <HelperText type="error" visible={wrongEmail} >
-          Senhas não coincidem
+          </View>
+          <View style={{ marginVertical: 5 }}>
+            <TextInput
+              label='Email'
+              mode='outlined'
+              underlineColor='#3BC365'
+              theme={{ colors: { primary: wrongEmail ? '#FF5252' : '#3BC365' } }}
+              onChangeText={text => setEmail(text)}
+              value={email}
+              keyboardType="email-address"
+              autoCapitalize="none"
+            />
+            <HelperText type="error" visible={wrongEmail} >
+              Senhas não coincidem
       </HelperText>
-      </View>
-      <View style={{ marginVertical: 5 }} >
-        <TextInput
-          label='Senha'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={{ colors: { primary: wrongPassword ? '#FF5252' : '#3BC365' } }}
-          onChangeText={text => setPassword(text)}
-          value={password}
-          autoCapitalize="none"
-          secureTextEntry
-        />
-        <HelperText type="error" visible={wrongPassword} >
-          Senhas não coincidem
+          </View>
+          <View style={{ marginVertical: 5 }} >
+            <TextInput
+              label='Senha'
+              mode='outlined'
+              underlineColor='#3BC365'
+              theme={{ colors: { primary: wrongPassword ? '#FF5252' : '#3BC365' } }}
+              onChangeText={text => setPassword(text)}
+              value={password}
+              autoCapitalize="none"
+              secureTextEntry
+            />
+            <HelperText type="error" visible={wrongPassword} >
+              Senhas não coincidem
       </HelperText>
-      </View>
-      <View style={{ marginVertical: 5 }} >
-        <TextInput
-          label='Repita Senha'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={{ colors: { primary: wrongPassword ? '#FF5252' : '#3BC365' } }}
-          onChangeText={text => setPassword2(text)}
-          value={password2}
-          autoCapitalize="none"
-          secureTextEntry
-        />
-        <HelperText type="error" visible={wrongPassword} >
-          Senhas não coincidem
+          </View>
+          <View style={{ marginVertical: 5 }} >
+            <TextInput
+              label='Repita Senha'
+              mode='outlined'
+              underlineColor='#3BC365'
+              theme={{ colors: { primary: wrongPassword ? '#FF5252' : '#3BC365' } }}
+              onChangeText={text => setPassword2(text)}
+              value={password2}
+              autoCapitalize="none"
+              secureTextEntry
+            />
+            <HelperText type="error" visible={wrongPassword} >
+              Senhas não coincidem
       </HelperText>
-      </View>
-      <SubmitBtn onPress={registerUser} activeOpacity={0.5} >
-        <SubmitText >REGISTER</SubmitText>
-      </SubmitBtn>
-    </Form>
+          </View>
+          <SubmitBtn onPress={registerUser} activeOpacity={0.5} >
+            <SubmitText >REGISTER</SubmitText>
+          </SubmitBtn>
+        </Form>
+      </ScrollView>
+    </KeyboardAvoidingView>
   )
 }
 
 function Company() {
   return (
-    <Form>
-      <SectionTitle>Endereço</SectionTitle>
-      <AddressContainer>
-        <Address1>
-          <TextInput
-            label='Cidade'
-            mode='outlined'
-            underlineColor='#3BC365'
-            theme={theme}
-            style={{ width: '70%' }}
-          />
-          <TextInput
-            label='UF'
-            mode='outlined'
-            underlineColor='#3BC365'
-            theme={theme}
-            style={{ width: '20%' }}
-          />
-        </Address1>
+    <KeyboardAvoidingView style={{ flex: 1 }} >
+      <ScrollView style={{ flex: 1 }} >
+        <Form>
+          <SectionTitle>Endereço</SectionTitle>
+          <AddressContainer>
+            <Address1>
+              <TextInput
+                label='Cidade'
+                mode='outlined'
+                underlineColor='#3BC365'
+                theme={theme}
+                style={{ width: '70%' }}
+              />
+              <TextInput
+                label='UF'
+                mode='outlined'
+                underlineColor='#3BC365'
+                theme={theme}
+                style={{ width: '20%' }}
+              />
+            </Address1>
 
-        <Address2>
-          <TextInput
-            label='Bairro'
-            mode='outlined'
-            underlineColor='#3BC365'
-            theme={theme}
-            style={{ flex: 1 }}
-          />
-          <TextInput
-            label='Rua'
-            mode='outlined'
-            underlineColor='#3BC365'
-            theme={theme}
-            style={{ flex: 1 }}
-          />
-          <TextInput
-            label='CEP'
-            mode='outlined'
-            underlineColor='#3BC365'
-            theme={theme}
-            style={{ flex: 1 }}
-          />
-        </Address2>
+            <Address2>
+              <TextInput
+                label='Bairro'
+                mode='outlined'
+                underlineColor='#3BC365'
+                theme={theme}
+                style={{ flex: 1 }}
+              />
+              <TextInput
+                label='Rua'
+                mode='outlined'
+                underlineColor='#3BC365'
+                theme={theme}
+                style={{ flex: 1 }}
+              />
+              <TextInput
+                label='CEP'
+                mode='outlined'
+                underlineColor='#3BC365'
+                theme={theme}
+                style={{ flex: 1 }}
+              />
+            </Address2>
 
-        <SectionTitle>Contato</SectionTitle>
-        <Address2>
-          <TextInput
-            label='DDD'
-            mode='outlined'
-            underlineColor='#3BC365'
-            theme={theme}
-            style={{ width: '20%' }}
-          />
-          <TextInput
-            label='Telefone'
-            mode='outlined'
-            underlineColor='#3BC365'
-            theme={theme}
-            style={{ width: '80%' }}
-          />
-        </Address2>
-      </AddressContainer>
-      <View>
-        <TextInput
-          label='Email'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={theme}
-          style={{ marginVertical: 15 }}
-        />
-        <TextInput
-          label='Senha'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={theme}
-          style={{ marginVertical: 15 }}
-        />
-        <TextInput
-          label='Senha novamente'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={theme}
-          style={{ marginVertical: 15 }}
-        />
-      </View>
-      <SubmitBtn>
-        <SubmitText>REGISTER</SubmitText>
-      </SubmitBtn>
-    </Form>
+            <SectionTitle>Contato</SectionTitle>
+            <Address2>
+              <TextInput
+                label='DDD'
+                mode='outlined'
+                underlineColor='#3BC365'
+                theme={theme}
+                style={{ width: '20%' }}
+              />
+              <TextInput
+                label='Telefone'
+                mode='outlined'
+                underlineColor='#3BC365'
+                theme={theme}
+                style={{ width: '80%' }}
+              />
+            </Address2>
+          </AddressContainer>
+          <View>
+            <TextInput
+              label='Email'
+              mode='outlined'
+              underlineColor='#3BC365'
+              theme={theme}
+              style={{ marginVertical: 15 }}
+            />
+            <TextInput
+              label='Senha'
+              mode='outlined'
+              underlineColor='#3BC365'
+              theme={theme}
+              style={{ marginVertical: 15 }}
+            />
+            <TextInput
+              label='Senha novamente'
+              mode='outlined'
+              underlineColor='#3BC365'
+              theme={theme}
+              style={{ marginVertical: 15 }}
+            />
+          </View>
+          <SubmitBtn>
+            <SubmitText>REGISTER</SubmitText>
+          </SubmitBtn>
+        </Form>
+      </ScrollView>
+    </KeyboardAvoidingView>
   )
 }
 
