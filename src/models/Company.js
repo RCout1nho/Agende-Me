@@ -6,9 +6,11 @@ const CompanySchema = new mongoose.Schema({
   contact: String,
   driveThru: Boolean,
   password: String,
-  serviceType: String,
   maxLot: Number,
   photo: String,
+  available: Boolean,
+  haveImage: Boolean,
+  type: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
@@ -20,7 +22,7 @@ const CompanySchema = new mongoose.Schema({
 });
 
 CompanySchema.virtual('photo_url').get(function () {
-  return `http://localhost:3333/files/${this.photo}`
+  return `http://192.168.0.10:3333/files/${this.photo}`
 })
 
 module.exports = mongoose.model('Company', CompanySchema);
