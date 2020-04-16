@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { IconButton } from 'react-native-paper';
 
 import StatusBar from '../../components/StatusBar';
 import {
   Container, HeadLogo, Title,
-  TitleContainer, ShowPlacesText, ShowPlacesContainer, HeadLogoContainer
+  TitleContainer, ShowPlacesText, ShowPlacesContainer, HeadLogoContainer,
+  Head, HeadButtonContainer
 } from './styles';
 
 import SearchBar from '../../components/SearchBar';
@@ -14,12 +17,15 @@ import logo from '../../assets/logo-S.png';
 
 import api from '../../services/api';
 
-export default function Places() {
+export default function Places({ route }) {
   const [places, setPlaces] = useState([]);
+  const navigation = useNavigation();
+
+  const { type } = route.params;
 
   useEffect(() => {
     async function apiGet() {
-      const response = await api.get('/company');
+      const response = await api.get(`/company/${String(type).toLowerCase()}`);
 
       setPlaces(response.data);
     }
@@ -27,47 +33,21 @@ export default function Places() {
     apiGet();
   }, []);
 
-  const mercados = [
-    {
-      name: 'TESTE',
-      available: true,
-      id: 1,
-      haveImage: true
-    },
-    {
-      name: 'Carrefour',
-      available: false,
-      id: 2,
-      haveImage: true
-    },
-    {
-      name: 'Atack',
-      available: true,
-      id: 3,
-      haveImage: true
-    },
-    {
-      name: 'Big Amigão',
-      available: true,
-      id: 4,
-      haveImage: true
-    },
-    {
-      name: 'Assaí',
-      available: true,
-      id: 5,
-      haveImage: true
-    }
-  ];
-
   return (
     <Container>
       <StatusBar />
 
-      <HeadLogo source={logo} />
+      <Head>
+        <HeadButtonContainer>
+          <IconButton icon="arrow-left" size={30} onPress={() => { navigation.goBack(); }} />
+        </HeadButtonContainer>
+        <HeadLogoContainer>
+          <HeadLogo source={logo} />
+        </HeadLogoContainer>
+      </Head>
 
       <TitleContainer>
-        <Title>Supermercados</Title>
+        <Title>{type}</Title>
       </TitleContainer>
 
       <SearchBar placeholder="Pesquise um estabelecimento" marginTop={20} />

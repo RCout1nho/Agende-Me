@@ -5,9 +5,10 @@ export const Container = styled.View`
   background: #F6F5F5;
 `;
 
-export const Form = styled.View`
-  flex:1;
+export const Form = styled.KeyboardAvoidingView`
   padding: 0px 20px;
+  align-self: center;
+  width: 90%;
 `;
 
 export const SubmitBtn = styled.TouchableOpacity`

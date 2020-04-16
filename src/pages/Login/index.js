@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { YellowBox, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TextInput } from 'react-native-paper';
@@ -66,7 +66,7 @@ function User({ route }) {
   }
 
   return (
-    <Form>
+    <Form >
       <MyDialog />
 
       <TextInput
@@ -77,6 +77,8 @@ function User({ route }) {
         style={{ marginVertical: 15 }}
         onChangeText={text => setEmail(text)}
         value={email}
+        keyboardType="email-address"
+        autoCapitalize="none"
       />
       <TextInput
         label='Senha'
@@ -86,6 +88,8 @@ function User({ route }) {
         style={{ marginVertical: 15 }}
         onChangeText={text => setPassword(text)}
         value={password}
+        autoCapitalize="none"
+        secureTextEntry
       />
       <SubmitBtn onPress={submit} >
         <SubmitText>LOGIN</SubmitText>

@@ -22,7 +22,7 @@ const theme = {
 }
 
 function User({ route }) {
-  const navigaiton = useNavigation();
+  const navigation = useNavigation();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -69,14 +69,14 @@ function User({ route }) {
             {fail ? "Ops, ouve um problema ao criar sua conta, tente novamente mais tarde" :
               "Sua conta foi criada com sucesso, agora basta ir para o menu login e aproveitar nosso app."}
           </Dialog.Description>
-          <Dialog.Button label="OK" onPress={() => { setDialogVisible(false); navigaiton.goBack() }} />
+          <Dialog.Button label="OK" onPress={() => { setDialogVisible(false); navigation.navigate("Welcome") }} />
         </Dialog.Container>
       </View>
     )
   }
 
   return (
-    <Form>
+    <Form >
       <MyDialog />
 
       <View style={{ marginTop: 20, marginBottom: 5 }} >
@@ -101,6 +101,7 @@ function User({ route }) {
           onChangeText={text => setEmail(text)}
           value={email}
           keyboardType="email-address"
+          autoCapitalize="none"
         />
         <HelperText type="error" visible={wrongEmail} >
           Senhas não coincidem
@@ -114,6 +115,8 @@ function User({ route }) {
           theme={{ colors: { primary: wrongPassword ? '#FF5252' : '#3BC365' } }}
           onChangeText={text => setPassword(text)}
           value={password}
+          autoCapitalize="none"
+          secureTextEntry
         />
         <HelperText type="error" visible={wrongPassword} >
           Senhas não coincidem
@@ -127,6 +130,8 @@ function User({ route }) {
           theme={{ colors: { primary: wrongPassword ? '#FF5252' : '#3BC365' } }}
           onChangeText={text => setPassword2(text)}
           value={password2}
+          autoCapitalize="none"
+          secureTextEntry
         />
         <HelperText type="error" visible={wrongPassword} >
           Senhas não coincidem
@@ -141,7 +146,7 @@ function User({ route }) {
 
 function Company() {
   return (
-    <Form >
+    <Form>
       <SectionTitle>Endereço</SectionTitle>
       <AddressContainer>
         <Address1>

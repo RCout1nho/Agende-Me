@@ -31,13 +31,8 @@ function Tabs({ route }) {
         backgroundColor: '#F8F8F8',
         elevation: 5
       }}
-      sceneAnimationEnabled={false}
     >
-      {/* <Tab.Screen name="Places" component={Places} options={{
-        tabBarIcon: ({ color }) => (
-          <MaterialIcons name="place" size={24} color={color} />
-        )
-      }} /> */}
+
       <Tab.Screen name="Categories" component={Categories} options={{
         tabBarIcon: ({ color }) => (
           <Entypo name="grid" size={24} color={color} />
@@ -156,7 +151,10 @@ export default function Routes() {
               />
             </>
             :
-            <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} initialParams={{ email: state.email, password: state.password, name: state.name, _id: state._id }} />
+            <>
+              <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} initialParams={{ email: state.email, password: state.password, name: state.name, _id: state._id }} />
+              <Stack.Screen name="Places" component={Places} options={{ headerShown: false }} />
+            </>
           }
         </Stack.Navigator>
       </NavigationContainer>

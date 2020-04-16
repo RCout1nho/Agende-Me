@@ -6,7 +6,6 @@ import StatusBar from '../../components/StatusBar';
 import { Container, HeadLogo, Title, Code, BtnSave, BtnText } from './styles';
 
 import logo from '../../assets/logo-S.png';
-import galaxy from '../../assets/galaxy.jpg';
 
 export default function Ticket() {
   return (

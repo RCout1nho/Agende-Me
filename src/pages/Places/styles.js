@@ -11,6 +11,12 @@ export const HeadLogo = styled.Image`
   align-self: center;
   margin: 10px 0px;
 `;
+export const HeadLogoContainer = styled.View`
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
 
 export const Title = styled(Headline)`
   color: #2D0C57;
@@ -30,5 +36,16 @@ export const ShowPlacesContainer = styled.TouchableOpacity`
 
 export const ShowPlacesText = styled(Paragraph)`
   color: #3BC365;
-  font-size: 17px;
+  font-size: 17px;`;
+
+
+export const Head = styled.View`
+  flex-direction: row;
+`;
+
+export const HeadButtonContainer = styled.View`
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;
