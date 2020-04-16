@@ -29,5 +29,8 @@ routes.get('/company_dashboard', CompanyDashboardController.show);
 routes.get('/auth/user', AuthenticationController.auth);
 
 routes.get('/company/:type', CompanyController.show);
+routes.get('/company/find/:_id', CompanyController.getById);
+
+routes.get('/index/company', CompanyController.total);
 
 module.exports = routes;

@@ -2,7 +2,13 @@ const mongoose = require('mongoose');
 
 const CompanySchema = new mongoose.Schema({
   name: String,
-  address: String,
+  address: {
+    street: String,
+    burgh: String,
+    city: String,
+    UF: String,
+    num: String
+  },
   contact: String,
   driveThru: Boolean,
   password: String,

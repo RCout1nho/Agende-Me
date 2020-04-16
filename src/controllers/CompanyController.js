@@ -3,7 +3,17 @@ const Company = require('../models/Company');
 module.exports = {
   async store(req, res) {
     const { filename } = req.file;
-    const { name, address, contact, driveThru, password, serviceType, maxLot, available, haveImage, type } = req.body;
+    const { name, contact, driveThru, password, serviceType, maxLot, available, haveImage, type,
+      city, UF, burgh, street, num
+    } = req.body;
+
+    const address = {
+      city,
+      UF,
+      burgh,
+      street,
+      num
+    };
 
     const company = await Company.create({
       name,
@@ -16,7 +26,7 @@ module.exports = {
       photo: filename,
       available,
       haveImage,
-      type
+      type,
     });
 
     return res.json(company);
@@ -33,5 +43,30 @@ module.exports = {
     const result = await Company.find({ type });
 
     return res.json(result);
+  },
+
+  async total(req, res) {
+    const bank = await Company.find({ type: 'bank' });
+    const supermarket = await Company.find({ type: 'supermarket' });
+    const restaurant = await Company.find({ type: 'restaurant' });
+    const fastFood = await Company.find({ type: 'fast-food' });
+
+    const response = {
+      bank: bank.length,
+      supermarket: supermarket.length,
+      restaurant: restaurant.length,
+      fastfood: fastFood.length
+    }
+
+    return res.json(response);
+  },
+
+  async getById(req, res) {
+    const { _id } = req.params;
+    console.log(_id);
+    const response = await Company.findById(_id);
+    console.log(response);
+
+    return res.json(response);
   }
 }
