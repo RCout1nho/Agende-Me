@@ -48,6 +48,7 @@ function User({ route }) {
   const { signIn } = useContext(AuthContext);
 
   async function submit() {
+    console.log(email, password)
     const response = await api.get('/auth/user', {
       headers: {
         email,
