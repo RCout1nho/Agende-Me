@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet, Text } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function Card({ name = "Sem nome", available = true, brand, id, onPressLike, onPressSchedule, haveImage }) {
+export default function Card({ name = "Sem nome", available = true, brand, id, onPressLike, onPressSchedule, haveImage, onPress }) {
   const [liked, setLiked] = useState(false);
 
   function handleLike() {
@@ -10,7 +10,7 @@ export default function Card({ name = "Sem nome", available = true, brand, id, o
   }
 
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.7} >
+    <TouchableOpacity style={styles.container} activeOpacity={0.7} onPress={onPress} >
       <View style={styles.brand} >
         {haveImage ?
           <Image source={{ uri: brand }} style={{ width: '100%', height: '100%' }} /> :

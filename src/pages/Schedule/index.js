@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Image, YellowBox } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Image, YellowBox, View } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 
 import { MaterialIcons } from '@expo/vector-icons';
@@ -17,8 +17,32 @@ import {
 import StatusBar from '../../components/StatusBar';
 import extra from '../../assets/extra.png';
 
-export default function Shedule() {
+import api from '../../services/api';
+
+export default function Shedule({ route }) {
   const [liked, setLiked] = useState(false);
+  const [place, setPlace] = useState({
+    name: "",
+    photo_url: ""
+  });
+  const [address, setAdress] = useState({
+    city: "",
+    UF: "",
+    burgh: "",
+    street: "",
+    num: ""
+  });
+
+  useEffect(() => {
+    async function getAPi() {
+      const response = await api.get(`/company/find/${route.params._id}`);
+
+      setPlace(response.data);
+      setAdress(response.data.address);
+    }
+
+    getAPi();
+  }, []);
 
   function handleLike() {
     setLiked(!liked);
@@ -43,12 +67,15 @@ export default function Shedule() {
       <StatusBar />
       <Content>
         <ImageContainer>
-          <Image source={extra} style={{ width: '100%' }} />
+          <Image source={{ uri: place.photo_url }} style={{ width: '100%', height: '100%' }} />
         </ImageContainer>
+        <View  >
+
+        </View>
         <ContainerMarket>
           <ContainerTitle>
             <NameMarket>
-              <TextTitle>Market</TextTitle>
+              <TextTitle>{place.name}</TextTitle>
             </NameMarket>
             <FavButton activeOpacity={0.5} onPress={() => { handleLike() }}  ><MaterialIcons
               name={liked ? "favorite" : "favorite-border"}
@@ -60,11 +87,11 @@ export default function Shedule() {
             <MaterialIcons name="home" size={20} />
             <Adress>
               <TextAdress>
-                Alexandra Smith
-            </TextAdress>
+                {address.city}, {address.UF}
+              </TextAdress>
               <TextAdress>
-                Cesu 31 k-2 5.st, SIA Chili
-            </TextAdress>
+                Bairro {address.burgh}, Rua {address.street}, Número {address.num}
+              </TextAdress>
             </Adress>
           </ContainerAdress>
           <ContainerList>
@@ -102,7 +129,7 @@ export default function Shedule() {
               <ScheduleButton>
                 <TextBox>
                   Schedule
-              </TextBox>
+               </TextBox>
               </ScheduleButton>
             </ContainerDropdown>
           </ContainerList>

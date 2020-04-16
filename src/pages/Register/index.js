@@ -87,13 +87,13 @@ function User({ route }) {
           Crie seu cadastro de usuário
         </TextStructure>
         <View style={{ alignItems: 'center' }}>
-          <MaterialIcons name="account-circle" size={160} color="#2D0C57" />
+          <MaterialIcons name="account-circle" size={160} color="#3BC365" />
         </View>
         <View>
           <TextInput
             label='Nome'
             mode='outlined'
-            theme={{ colors: { primary: wrongName ? '#FF5252' : "#2D0C57" } }}
+            theme={{ colors: { primary: wrongName ? '#FF5252' : "#3BC365" } }}
             onChangeText={text => setName(text)}
             value={name}
             autoCapitalize="words"
@@ -106,7 +106,7 @@ function User({ route }) {
           <TextInput
             label='Email'
             mode='outlined'
-            theme={{ colors: { primary: wrongEmail ? '#FF5252' : "#2D0C57" } }}
+            theme={{ colors: { primary: wrongEmail ? '#FF5252' : "#3BC365" } }}
             onChangeText={text => setEmail(text)}
             value={email}
             keyboardType="email-address"
@@ -120,7 +120,7 @@ function User({ route }) {
           <TextInput
             label='Senha'
             mode='outlined'
-            theme={{ colors: { primary: wrongPassword ? '#FF5252' : "#2D0C57" } }}
+            theme={{ colors: { primary: wrongPassword ? '#FF5252' : "#3BC365" } }}
             onChangeText={text => setPassword(text)}
             value={password}
             autoCapitalize="none"
@@ -134,7 +134,7 @@ function User({ route }) {
           <TextInput
             label='Repita Senha'
             mode='outlined'
-            theme={{ colors: { primary: wrongPassword ? '#FF5252' : "#2D0C57" } }}
+            theme={{ colors: { primary: wrongPassword ? '#FF5252' : "#3BC365" } }}
             onChangeText={text => setPassword2(text)}
             value={password2}
             autoCapitalize="none"
@@ -172,14 +172,13 @@ function Company() {
             <TextInput
               label='Cidade'
               mode='outlined'
-              underlineColor='#3BC365'
               theme={theme}
               style={{ width: '70%' }}
             />
             <TextInput
               label='UF'
               mode='outlined'
-              underlineColor='#3BC365'
+
               theme={theme}
               style={{ width: '20%' }}
             />
@@ -189,21 +188,21 @@ function Company() {
             <TextInput
               label='Bairro'
               mode='outlined'
-              underlineColor='#3BC365'
+
               theme={theme}
               style={{ flex: 1, paddingRight: 5 }}
             />
             <TextInput
               label='Rua'
               mode='outlined'
-              underlineColor='#3BC365'
+
               theme={theme}
               style={{ flex: 1, paddingRight: 5 }}
             />
             <TextInput
               label='CEP'
               mode='outlined'
-              underlineColor='#3BC365'
+
               theme={theme}
               style={{ flex: 1 }}
             />
@@ -214,14 +213,14 @@ function Company() {
             <TextInput
               label='DDD'
               mode='outlined'
-              underlineColor='#3BC365'
+
               theme={theme}
               style={{ width: '20%', paddingRight: 5 }}
             />
             <TextInput
               label='Telefone'
               mode='outlined'
-              underlineColor='#3BC365'
+
               theme={theme}
               style={{ width: '80%' }}
             />
@@ -231,21 +230,18 @@ function Company() {
           <TextInput
             label='Email'
             mode='outlined'
-            underlineColor='#3BC365'
             theme={theme}
             style={{ marginTop: 15 }}
           />
           <TextInput
             label='Senha'
             mode='outlined'
-            underlineColor='#3BC365'
             theme={theme}
             style={{ marginTop: 15 }}
           />
           <TextInput
             label='Senha novamente'
             mode='outlined'
-            underlineColor='#3BC365'
             theme={theme}
             style={{ marginTop: 15 }}
           />
@@ -265,7 +261,7 @@ function MyTabs({ token }) {
         backgroundColor: '#F8F8F8'
       },
       indicatorStyle: {
-        backgroundColor: '#2D0C57'
+        backgroundColor: '#3BC365'
       }
     }} >
       <TopTab.Screen name="User" component={User} initialParams={{ token }} />

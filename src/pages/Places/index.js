@@ -33,6 +33,12 @@ export default function Places({ route }) {
     apiGet();
   }, []);
 
+  function goSchedule(_id) {
+    navigation.navigate('Schedule', {
+      _id
+    });
+  }
+
   return (
     <Container>
       <StatusBar />
@@ -58,7 +64,9 @@ export default function Places({ route }) {
       <FlatList
         data={places}
         renderItem={({ item }) => (
-          <Card name={item.name} available={item.available} brand={item.photo_url} haveImage={item.haveImage} onPressLike={() => { }} />
+          <Card name={item.name} available={item.available} brand={item.photo_url}
+            haveImage={item.haveImage} onPressLike={() => { }} onPress={() => { goSchedule(item._id) }}
+          />
         )}
         keyExtractor={item => String(item.id)}
       />

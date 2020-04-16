@@ -6,9 +6,10 @@ export const Container = styled.View`
 `;
 
 export const Form = styled.View`
-  padding: 0px 20px;
+  padding: 20px 20px;
   width: 90%;
   background-color: #F6F5F5;
+  align-self: center;
 `;
 
 export const SubmitBtn = styled.TouchableOpacity`

@@ -13,13 +13,15 @@ export const Content = styled.View`
 ` ;
 
 export const ImageContainer = styled.View`
-  height: 250px;
+  height: 50%;
+  width:100%;
+  position: absolute;
   align-items: center;
 `;
 
 export const ContainerMarket = styled.View`
   background: #F6F5F5;
-  height: 410px;
+  height: 55%;
   z-index: 1;
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;

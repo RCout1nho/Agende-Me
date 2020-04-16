@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { YellowBox, View, Image, KeyboardAvoidingView } from 'react-native';
+import { YellowBox, View, Image, ScrollView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TextInput } from 'react-native-paper';
 import Dialog from 'react-native-dialog';
@@ -23,11 +23,12 @@ const theme = {
   }
 }
 
-
 function User({ route }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [dialogVisible, setDialogVisible] = useState(false);
+
+  const { AuthContext } = route.params;
 
   function MyDialog() {
     return (
@@ -42,8 +43,6 @@ function User({ route }) {
       </View>
     )
   }
-
-  const { AuthContext } = route.params;
 
   const { signIn } = useContext(AuthContext);
 
@@ -67,62 +66,70 @@ function User({ route }) {
   }
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior="padding" >
+    <View style={{ flex: 1 }} >
       <Form >
-        <MyDialog />
-        <TextInput
-          label='Email'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={theme}
-          style={{ marginVertical: 15 }}
-          onChangeText={text => setEmail(text)}
-          value={email}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-        <TextInput
-          label='Senha'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={theme}
-          style={{ marginVertical: 15 }}
-          onChangeText={text => setPassword(text)}
-          value={password}
-          autoCapitalize="none"
-          secureTextEntry
-        />
-        <SubmitBtn onPress={submit} >
-          <SubmitText>LOGIN</SubmitText>
-        </SubmitBtn>
+        <ScrollView >
+          <MyDialog />
+          <TextInput
+            label='Email'
+            mode='outlined'
+            underlineColor='#3BC365'
+            theme={theme}
+            style={{ marginVertical: 15 }}
+            onChangeText={text => setEmail(text)}
+            value={email}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <TextInput
+            label='Senha'
+            mode='outlined'
+            underlineColor='#3BC365'
+            theme={theme}
+            style={{ marginVertical: 15 }}
+            onChangeText={text => setPassword(text)}
+            value={password}
+            autoCapitalize="none"
+            secureTextEntry
+          />
+          <SubmitBtn onPress={submit} >
+            <SubmitText>LOGIN</SubmitText>
+          </SubmitBtn>
+        </ScrollView>
       </Form>
-    </KeyboardAvoidingView>
+    </View>
   )
 }
 
 function Company() {
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} enabled behavior="padding">
+    <View style={{ flex: 1 }} >
       <Form >
-        <TextInput
-          label='Email'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={theme}
-          style={{ marginVertical: 15 }}
-        />
-        <TextInput
-          label='Senha'
-          mode='outlined'
-          underlineColor='#3BC365'
-          theme={theme}
-          style={{ marginVertical: 15 }}
-        />
-        <SubmitBtn>
-          <SubmitText>LOGIN</SubmitText>
-        </SubmitBtn>
+        <ScrollView >
+          <TextInput
+            label='Email'
+            mode='outlined'
+            underlineColor='#3BC365'
+            theme={theme}
+            style={{ marginVertical: 15 }}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <TextInput
+            label='Senha'
+            mode='outlined'
+            underlineColor='#3BC365'
+            theme={theme}
+            style={{ marginVertical: 15 }}
+            autoCapitalize="none"
+            secureTextEntry
+          />
+          <SubmitBtn>
+            <SubmitText>LOGIN</SubmitText>
+          </SubmitBtn>
+        </ScrollView>
       </Form>
-    </KeyboardAvoidingView >
+    </View>
   )
 }
 
