@@ -9,10 +9,12 @@ export const Form = styled.KeyboardAvoidingView`
   padding: 0px 20px;
   align-self: center;
   width: 90%;
+  background-color: #F6F5F5;
 `;
 
 export const SubmitBtn = styled.TouchableOpacity`
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 90%;
   height: 56px;
   background: #3BC365;
@@ -44,6 +46,7 @@ export const AddressContainer = styled.View`
 export const Address1 = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 10px;
   width: 100%;
 `;
 
@@ -51,4 +54,9 @@ export const Address2 = styled.View`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+`;
+
+export const TextStructure = styled.Text`
+  color: #2D0C57;
+  font-size: 34px
 `;
