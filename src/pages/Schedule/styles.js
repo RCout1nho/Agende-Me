@@ -19,7 +19,7 @@ export const ImageContainer = styled.View`
 
 export const ContainerMarket = styled.View`
   background: #F6F5F5;
-  height: 450px;
+  height: 410px;
   z-index: 1;
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
@@ -45,7 +45,6 @@ export const ContainerAdress = styled.View`
 `;
 
 export const ContainerList = styled.View`
-  margin-top:16px;
   height:199px;
   width:325px;
   margin-left: 44.5px;
@@ -73,6 +72,7 @@ export const ScheduleButton = styled.TouchableOpacity`
   justify-content: center;
   border-radius: 13px;
   margin: auto;
+  margin-top:22px;
 `;
 
 export const NameMarket = styled.View`
