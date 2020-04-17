@@ -154,7 +154,7 @@ export default function Routes() {
             <>
               <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} initialParams={{ email: state.email, password: state.password, name: state.name, _id: state._id }} />
               <Stack.Screen name="Places" component={Places} options={{ headerShown: false }} />
-              <Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} />
+              <Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} initialParams={{ user_id: state._id }} />
               <Stack.Screen name="Ticket" component={Ticket} options={{ headerShown: false }} />
             </>
           }

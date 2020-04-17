@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { YellowBox, View, Image, ScrollView } from 'react-native';
+import { YellowBox, View, ScrollView } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { TextInput } from 'react-native-paper';
 import Dialog from 'react-native-dialog';
@@ -8,7 +8,7 @@ import api from '../../services/api';
 import logo from '../../assets/logo-S.png';
 
 import {
-  Container, Form, SubmitBtn, SubmitText, Content
+  Container, Form, SubmitBtn, SubmitText
 } from './styles';
 
 YellowBox.ignoreWarnings([
@@ -28,8 +28,6 @@ function User({ route }) {
   const [password, setPassword] = useState('');
   const [dialogVisible, setDialogVisible] = useState(false);
 
-  const { AuthContext } = route.params;
-
   function MyDialog() {
     return (
       <View>
@@ -37,17 +35,18 @@ function User({ route }) {
           <Dialog.Title>Ops</Dialog.Title>
           <Dialog.Description>
             E-mail ou senha inválidos, tente novamente!
-          </Dialog.Description>
+            </Dialog.Description>
           <Dialog.Button label="OK" onPress={() => { setDialogVisible(false) }} />
         </Dialog.Container>
       </View>
     )
   }
 
+  const { AuthContext } = route.params;
+
   const { signIn } = useContext(AuthContext);
 
   async function submit() {
-    console.log(email, password)
     const response = await api.get('/auth/user', {
       headers: {
         email,

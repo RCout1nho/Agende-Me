@@ -68,13 +68,14 @@ export const FavButton = styled.TouchableOpacity`
 `;
 
 export const ScheduleButton = styled.TouchableOpacity`
-  width: 165px;
-  height: 44px;
+  width: 80%;
+  height: 60px;
   background-color: #3BC365;
   justify-content: center;
   border-radius: 13px;
   margin: auto;
   margin-top:22px;
+  elevation: 5;
 `;
 
 export const NameMarket = styled.View`
@@ -95,6 +96,7 @@ export const TextAdress = styled.Text`
 export const TextBox = styled.Text`
   color: #fff;
   text-align: center;
+  font-size: 20px;
 `;
 
 export const Adress = styled.View`

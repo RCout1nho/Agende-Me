@@ -35,7 +35,7 @@ export default function Places({ route }) {
 
   function goSchedule(_id) {
     navigation.navigate('Schedule', {
-      _id
+      company_id: _id
     });
   }
 

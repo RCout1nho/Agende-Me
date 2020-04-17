@@ -1,25 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Image, YellowBox, View } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
+import Dialog from 'react-native-dialog';
 
 import { MaterialIcons } from '@expo/vector-icons';
 
 YellowBox.ignoreWarnings([
   'componentWillUpdate has been renamed',
-  'componentWillReceiveProps has been renamed'
-])
+  'componentWillReceiveProps has been renamed',
+  'source.uri'
+]);
 
 import {
   Container, ContainerTitle, NameMarket, FavButton, TextTitle, ContainerMarket, ContainerList, ContainerAdress, TextAdress,
   Adress, ContainerDropdown, ScheduleButton, TextBox, Content, ImageContainer
 } from './styles';
 
+import getDays from '../../utils/getDays';
+import getSchedules from '../../utils/getSchedules';
+
 import StatusBar from '../../components/StatusBar';
-import extra from '../../assets/extra.png';
 
 import api from '../../services/api';
 
 export default function Shedule({ route }) {
+  const [dialogVisible, setDialogVisible] = useState(false);
+  const [date, setDate] = useState('');
+  const [hour, setHour] = useState('');
   const [liked, setLiked] = useState(false);
   const [place, setPlace] = useState({
     name: "",
@@ -33,14 +40,27 @@ export default function Shedule({ route }) {
     num: ""
   });
 
+  function MyDialog() {
+    return (
+      <View>
+        <Dialog.Container visible={dialogVisible} >
+          <Dialog.Title>Parabéns!</Dialog.Title>
+          <Dialog.Description>
+            Você foi agendado(a) com sucesso!
+            </Dialog.Description>
+          <Dialog.Button label="OK" onPress={() => { setDialogVisible(false) }} />
+        </Dialog.Container>
+      </View>
+    )
+  }
+
   useEffect(() => {
     async function getAPi() {
-      const response = await api.get(`/company/find/${route.params._id}`);
+      const response = await api.get(`/company/find/${route.params.company_id}`);
 
       setPlace(response.data);
       setAdress(response.data.address);
     }
-
     getAPi();
   }, []);
 
@@ -48,23 +68,23 @@ export default function Shedule({ route }) {
     setLiked(!liked);
   };
 
-  let data = [{
-    value: '1',
-  }, {
-    value: '2',
-  }, {
-    value: '3',
-  }, {
-    value: '4',
-  }, {
-    value: '5',
-  }, {
-    value: '6',
-  }];
+  async function booking() {
+    const response = await api.post(`/booking/${place._id}`, {
+      hour,
+      date
+    }, {
+      headers: {
+        user: route.params.user_id
+      }
+    });
+
+    setDialogVisible(true);
+  }
 
   return (
     <Container>
       <StatusBar />
+      <MyDialog />
       <Content>
         <ImageContainer>
           <Image source={{ uri: place.photo_url }} style={{ width: '100%', height: '100%' }} />
@@ -98,7 +118,7 @@ export default function Shedule({ route }) {
             <ContainerDropdown>
               <Dropdown
                 label='Escolha o dia'
-                data={data}
+                data={getDays()}
                 itemPadding={8}
                 fontSize={21}
                 baseColor={"#868686"}
@@ -110,10 +130,12 @@ export default function Shedule({ route }) {
                   justifyContent: "center",
                   paddingLeft: 10
                 })}
+                onChangeText={text => setDate(text)}
+                value={date}
               />
               <Dropdown
                 label='Escolha o horário'
-                data={data}
+                data={getSchedules()}
                 itemPadding={8}
                 fontSize={21}
                 baseColor={"#868686"}
@@ -125,8 +147,10 @@ export default function Shedule({ route }) {
                   justifyContent: "center",
                   paddingLeft: 10
                 })}
+                onChangeText={text => setHour(text)}
+                value={hour}
               />
-              <ScheduleButton>
+              <ScheduleButton activeOpacity={0.5} onPress={booking} >
                 <TextBox>
                   Schedule
                </TextBox>
