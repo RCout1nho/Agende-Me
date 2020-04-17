@@ -4,9 +4,26 @@ export const Container = styled.View`
   flex: 1;
 `;
 
+export const Head = styled.View`
+  flex-direction: row;
+`;
+
+export const HeadButtonContainer = styled.View`
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
 export const HeadLogo = styled.Image`
   align-self: center;
   margin: 10px 0px;
+`;
+export const HeadLogoContainer = styled.View`
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `;
 
 export const Title = styled.Text`

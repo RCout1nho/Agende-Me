@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Image, YellowBox, View } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import Dialog from 'react-native-dialog';
+import { useNavigation } from '@react-navigation/native';
 
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -24,6 +25,7 @@ import StatusBar from '../../../components/StatusBar';
 import api from '../../../services/api';
 
 export default function Shedule({ route }) {
+  const navigation = useNavigation();
   const [dialogVisible, setDialogVisible] = useState(false);
   const [date, setDate] = useState('');
   const [hour, setHour] = useState('');
@@ -79,6 +81,9 @@ export default function Shedule({ route }) {
     });
 
     setDialogVisible(true);
+
+    navigation.navigate('Ticket', { id: response.data._id });
+
   }
 
   return (

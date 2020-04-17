@@ -27,7 +27,7 @@ export default function Welcome() {
   return (
     <Container>
       <LogoContainer>
-        <Image source={background} style={{ width: '100%', borderColor: 'red', borderWidth: 1 }} />
+        <Image source={background} style={{ width: '100%', borderWidth: 1 }} />
       </LogoContainer>
       <CardContainer >
         <CardLogo>

@@ -1,29 +1,51 @@
-import React from 'react';
-//import QRCode from 'react-native-qrcode-svg';
+import React, { useEffect, useState, } from 'react';
 import { QRCode } from 'react-native-custom-qr-codes';
+import { IconButton } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 import StatusBar from '../../../components/StatusBar';
-import { Container, HeadLogo, Title, Code, BtnSave, BtnText } from './styles';
+import {
+  Container, Title, Code, BtnSave, BtnText, Head,
+  HeadButtonContainer, HeadLogo, HeadLogoContainer
+} from './styles';
 
 import logo from '../../../assets/logo-S.png';
 
-export default function Ticket() {
+export default function Ticket({ route }) {
+  const navigation = useNavigation();
+  const [rendered, setRendered] = useState(false);
+
+  useEffect(() => {
+    setRendered(true);
+  }, []);
+
+  const { id } = route.params;
+
   return (
     <Container>
       <StatusBar />
+      <Head>
+        <HeadButtonContainer>
+          <IconButton icon="arrow-left" size={30} onPress={() => { navigation.goBack(); }} />
+        </HeadButtonContainer>
+        <HeadLogoContainer>
+          <HeadLogo source={logo} />
+        </HeadLogoContainer>
+      </Head>
 
-      <HeadLogo source={logo} />
 
-      <Title>Scheduled! Your ticket:</Title>
-
-      <Code>
-        <QRCode
-          content="https://instagram.com/agende.me?igshid=rhreiz6cld52"
-          logo={logo}
-          logoSize={70}
-          color="#3BC365"
-          codeStyle='dot'
-        />
+      <Title >Scheduled! Your ticket:</Title>
+      <Code >
+        {
+          rendered &&
+          <QRCode
+            content={id}
+            logo={logo}
+            logoSize={70}
+            color="#3BC365"
+            codeStyle='dot'
+          />
+        }
       </Code>
 
       <BtnSave activeOpacity={0.5} >

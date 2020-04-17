@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { FlatList, RefreshControl } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 import {
   Container, HeadTitle, DayContainer,
@@ -13,9 +14,9 @@ import SearchBar from '../../../components/SearchBar';
 
 import api from '../../../services/api';
 
-function Card({ name = "", day = "", month = "", available = true }) {
+function Card({ name = "", day = "", month = "", available = true, onPress }) {
   return (
-    <CardContainer activeOpacity={0.5} style={{ backgroundColor: available ? '#3BC365' : '#FF5252' }} >
+    <CardContainer activeOpacity={0.5} style={{ backgroundColor: available ? '#3BC365' : '#FF5252' }} onPress={onPress} >
       <DateContainer>
         <DayContainer>
           <DayText>{day}</DayText>
@@ -43,6 +44,7 @@ function wait(timeout) {
 }
 
 export default function YourTickets({ route }) {
+  const navigation = useNavigation();
   const [refreshing, setRefreshing] = React.useState(false);
   const [booking, setBooking] = useState([{
     name: "",
@@ -80,7 +82,10 @@ export default function YourTickets({ route }) {
       <FlatList
         data={booking}
         renderItem={({ item }) => (
-          <Card name={item.company.name} day={item.date.day} month={item.date.month} available={item.company.available} />
+          <Card name={item.company.name} day={item.date.day}
+            month={item.date.month} available={item.company.available}
+            onPress={() => { navigation.navigate('Ticket', { id: item._id }) }}
+          />
         )}
         keyExtractor={item => String(item._id)}
         refreshControl={
