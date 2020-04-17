@@ -34,17 +34,18 @@ export default function Welcome() {
           <Image source={logo} style={{ width: 138, height: 138 }} />
         </CardLogo>
         <CardTitle>
-          <CardTitleText>Book your shopping</CardTitleText>
+          <CardTitleText>Evite aglomerações!</CardTitleText>
         </CardTitle>
         <CardDescription>
           <CardDescriptionText>When placing an order, select the option “Contactless delivery” and
             the courier will leave your order at the door.</CardDescriptionText>
         </CardDescription>
         <BtnRegister activeOpacity={0.8} onPress={goToRegister} >
-          <BtnRegisterText>REGISTER</BtnRegisterText>
+          <BtnRegisterText>CADASTRE-SE</BtnRegisterText>
         </BtnRegister>
 
-        <BtnLogin underlayColor="#3BC365" onPressOut={() => { goToLogin(); setUnderlay(false) }} onPressIn={() => { setUnderlay(true) }} activeOpacity={0.5} delayPressOut={0.5}
+        <BtnLogin underlayColor="#3BC365" onPressOut={() => { goToLogin(); setUnderlay(false) }}
+          onPressIn={() => { setUnderlay(true) }} activeOpacity={0.5} delayPressOut={0.5}
         >
           <BtnLoginText style={{ color: underlay ? "#fff" : "#3BC365" }} >LOGIN</BtnLoginText>
         </BtnLogin>

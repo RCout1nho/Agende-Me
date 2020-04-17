@@ -34,10 +34,6 @@ export default function Profile({ route }) {
     signOut();
   }
 
-  function ticket() {
-    console.log(email, password, name, _id);
-  }
-
   return (
     <Container>
       <StatusBar />
@@ -53,10 +49,9 @@ export default function Profile({ route }) {
 
       <ScrollView >
         <OptionsCard>
-          <Card name="Tickets" iconName="history" Iconcolor="#3BC365" onPress={ticket} />
-          <Card name="Favorites" iconName="favorite-border" Iconcolor="#3BC365" />
-          <Card name="Settings" iconName="settings" Iconcolor="#3BC365" />
-          <Card name="Privacy" iconName="security" Iconcolor="#3BC365" />
+          <Card name="Favoritos" iconName="favorite-border" Iconcolor="#3BC365" />
+          <Card name="Ajustes" iconName="settings" Iconcolor="#3BC365" />
+          <Card name="Privacidade" iconName="security" Iconcolor="#3BC365" />
           <Card name="FAQ" iconName="book" Iconcolor="#3BC365" />
           <Card name="Logout" iconName="settings-power" Iconcolor="#3BC365" onPress={logout} />
         </OptionsCard>

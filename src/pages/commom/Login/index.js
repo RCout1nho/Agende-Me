@@ -142,8 +142,12 @@ function MyTabs({ AuthContext }) {
         backgroundColor: '#3BC365'
       }
     }} >
-      <TopTab.Screen name="User" component={User} initialParams={{ AuthContext }} />
-      <TopTab.Screen name="Company" component={Company} />
+      <TopTab.Screen name="User" component={User} initialParams={{ AuthContext }} options={{
+        title: "Usuário"
+      }} />
+      <TopTab.Screen name="Company" component={Company} options={{
+        title: "Empresa"
+      }} />
     </TopTab.Navigator>
   )
 }

@@ -63,17 +63,17 @@ export default function Categories() {
       <HeadLogoContainer>
         <HeadLogo source={logo} />
       </HeadLogoContainer>
-      <HeadTitle>Categories</HeadTitle>
+      <HeadTitle>Categorias</HeadTitle>
       <SearchBar placeholder="Pesquise por categoria" marginTop={15} />
 
       <CardsContainer>
         <Line>
-          <MyCard name="Supermercados" count={supermarket} logo={supermarketImg} onPress={() => { navigation.navigate('Places', { type: "Supermarket" }) }} />
-          <MyCard name="Bancos" count={bank} logo={bankImg} onPress={() => { navigation.navigate('Places', { type: "Bank" }) }} />
+          <MyCard name="Supermercados" count={supermarket} logo={supermarketImg} onPress={() => { navigation.navigate('Places', { type: "Supermarket", name: "Supermercados" }) }} />
+          <MyCard name="Bancos" count={bank} logo={bankImg} onPress={() => { navigation.navigate('Places', { type: "Bank", name: "Bancos" }) }} />
         </Line>
         <Line>
-          <MyCard name="Fast-Food" count={fastFood} logo={fastFoodImg} onPress={() => { navigation.navigate('Places', { type: "Fast-Food" }) }} />
-          <MyCard name="Restaurantes" count={restaurant} logo={restaurantImg} onPress={() => { navigation.navigate('Places', { type: "Restaurant" }) }} />
+          <MyCard name="Lachonetes" count={fastFood} logo={fastFoodImg} onPress={() => { navigation.navigate('Places', { type: "Fast-Food", name: "Lanchonetes" }) }} />
+          <MyCard name="Restaurantes" count={restaurant} logo={restaurantImg} onPress={() => { navigation.navigate('Places', { type: "Restaurant", name: "Restaurantes" }) }} />
         </Line>
       </CardsContainer>
     </Container>

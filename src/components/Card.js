@@ -26,9 +26,9 @@ export default function Card({ name = "Sem nome", available = true, brand, id, o
             <Text style={styles.title} >{name}</Text>
           </View>
           <View>
-            <Text style={styles.description} >{available ?
-              "AVAILABLE THIS WEEK" :
-              "UNAVAILABLE THIS WEEK"}</Text>
+            <Text style={[styles.description, { color: available ? '#2D0C57' : '#FF0000' }]} >{available ?
+              "DISPONÍVEL" :
+              "INDISPONÍVEL"}</Text>
           </View>
         </View>
 
@@ -55,11 +55,15 @@ export default function Card({ name = "Sem nome", available = true, brand, id, o
 
 const styles = StyleSheet.create({
   container: {
-    width: '90%',
+    width: '95%',
     height: 160,
     alignSelf: 'center',
     flexDirection: 'row',
-    marginVertical: 10
+    marginVertical: 10,
+    backgroundColor: '#fff',
+    padding: 10,
+    elevation: 10,
+    borderRadius: 10
   },
   brand: {
     width: 170,
@@ -97,7 +101,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 8,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    elevation: 5
   },
   scheduleOk: {
     width: 80,
@@ -105,7 +110,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#3BC365',
     borderRadius: 8,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    elevation: 5
   },
   scheduleNok: {
     width: 80,
@@ -113,7 +119,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF5252',
     borderRadius: 8,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    elevation: 5
   },
   noPoster: {
     fontSize: 20,

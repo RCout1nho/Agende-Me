@@ -30,6 +30,7 @@ export const UsernameCard = styled.TouchableOpacity`
   align-items: center;
   padding: 5px 25px;
   elevation: 10;
+  margin-bottom: 20px;
 `;
 
 export const CardText = styled.Text`
@@ -43,7 +44,8 @@ export const OptionsCard = styled.View`
   height: 100%;
   border-radius: 10px;
   align-self: center;
-  elevation: 10;
+  elevation: 5;
+  margin-bottom: 10px;
 `;
 
 export const Option = styled.TouchableOpacity`

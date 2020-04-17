@@ -21,7 +21,7 @@ export default function Places({ route }) {
   const [places, setPlaces] = useState([]);
   const navigation = useNavigation();
 
-  const { type } = route.params;
+  const { type, name } = route.params;
 
   useEffect(() => {
     async function apiGet() {
@@ -53,7 +53,7 @@ export default function Places({ route }) {
       </Head>
 
       <TitleContainer>
-        <Title>{type}</Title>
+        <Title>{name}</Title>
       </TitleContainer>
 
       <SearchBar placeholder="Pesquise um estabelecimento" marginTop={20} />

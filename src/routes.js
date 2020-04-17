@@ -28,29 +28,33 @@ function Tabs({ route }) {
 
   return (
     <Tab.Navigator
-      activeColor="#000"
+      activeColor="#3BC365"
       barStyle={{
         backgroundColor: '#F8F8F8',
-        elevation: 5
+        elevation: 5,
       }}
+
     >
 
       <Tab.Screen name="Categories" component={Categories} options={{
         tabBarIcon: ({ color }) => (
           <Entypo name="grid" size={24} color={color} />
-        )
+        ),
+        title: "Categorias",
       }} />
       <Tab.Screen name="Your Tickets" component={YourTickets} options={{
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons name="ticket-account" size={25} color={color} />
-        )
+        ),
+        title: "Meus Tickets"
       }}
         initialParams={{ _id }}
       />
       <Tab.Screen name="Profile" component={Profile} options={{
         tabBarIcon: ({ color }) => (
           <MaterialIcons name="account-circle" size={25} color={color} />
-        )
+        ),
+        title: "Perfil"
       }}
         initialParams={{ AuthContext, email, password, name, _id }}
       />
@@ -157,6 +161,9 @@ export default function Routes() {
                 name="Register"
                 component={Register}
                 initialParams={{ token: state.userToken }}
+                options={{
+                  title: "Cadastre-se"
+                }}
               />
             </>
             :

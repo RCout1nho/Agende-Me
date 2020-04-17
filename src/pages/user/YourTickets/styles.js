@@ -12,11 +12,6 @@ export const HeadTitle = styled.Text`
   padding: 10px 25px;
 `;
 
-export const ListView = styled.ScrollView`
-  flex: 1;
-  padding: 20px;
-`;
-
 export const CardContainer = styled.TouchableOpacity`
   background: #3BC365;
   border-radius: 17px;
@@ -78,3 +73,20 @@ export const NameText = styled.Text`
   font-size: 23px;
 `;
 
+export const NoTicketsContainer = styled.View`
+  width: 100%;
+  align-items: center;
+  padding-top: 100px;
+`;
+
+export const NoTicketsText = styled.Text`
+  font-size: 20px;
+  font-weight: bold;
+  color: #3BC365;
+`;
+
+export const NoTicketsSubText = styled.Text`
+  font-size: 15px;
+  font-weight: bold;
+  color: #3BC365;
+`;

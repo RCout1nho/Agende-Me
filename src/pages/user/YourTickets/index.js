@@ -6,7 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import {
   Container, HeadTitle, DayContainer,
   CardContainer, DateContainer, NameContainer, InfoContainer, MonthContainer,
-  IconContainer, DayText, MonthText, NameText
+  IconContainer, DayText, MonthText, NameText, NoTicketsContainer, NoTicketsText,
+  NoTicketsSubText
 } from './styles';
 
 import StatusBar from '../../../components/StatusBar';
@@ -45,17 +46,8 @@ function wait(timeout) {
 
 export default function YourTickets({ route }) {
   const navigation = useNavigation();
-  const [refreshing, setRefreshing] = React.useState(false);
-  const [booking, setBooking] = useState([{
-    name: "",
-    date: {
-      day: "",
-      month: ""
-    },
-    company: {
-      available: true
-    }
-  }]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [booking, setBooking] = useState([]);
 
   async function apiGet() {
     const response = await api.get(`/booking/${route.params._id}`);
@@ -89,8 +81,14 @@ export default function YourTickets({ route }) {
         )}
         keyExtractor={item => String(item._id)}
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          <RefreshControl colors={["#3BC365", "#FF5252"]} refreshing={refreshing} onRefresh={onRefresh} />
         }
+        ListEmptyComponent={() => (
+          <NoTicketsContainer>
+            <NoTicketsText>Sem tickets a exibir</NoTicketsText>
+            <NoTicketsSubText>Arraste para baixo pra atualizar!</NoTicketsSubText>
+          </NoTicketsContainer>
+        )}
       />
     </Container>
   )

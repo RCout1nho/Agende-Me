@@ -264,8 +264,12 @@ function MyTabs({ token }) {
         backgroundColor: '#3BC365'
       }
     }} >
-      <TopTab.Screen name="User" component={User} initialParams={{ token }} />
-      <TopTab.Screen name="Company" component={Company} />
+      <TopTab.Screen name="User" component={User} initialParams={{ token }} options={{
+        title: "Usuário"
+      }} />
+      <TopTab.Screen name="Company" component={Company} options={{
+        title: "Empresa"
+      }} />
     </TopTab.Navigator>
   )
 }
