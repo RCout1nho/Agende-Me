@@ -71,7 +71,7 @@ export default function Shedule({ route }) {
   async function booking() {
     const response = await api.post(`/booking/${place._id}`, {
       hour,
-      date
+      day: date
     }, {
       headers: {
         user: route.params.user_id
@@ -97,11 +97,13 @@ export default function Shedule({ route }) {
             <NameMarket>
               <TextTitle>{place.name}</TextTitle>
             </NameMarket>
-            <FavButton activeOpacity={0.5} onPress={() => { handleLike() }}  ><MaterialIcons
-              name={liked ? "favorite" : "favorite-border"}
-              size={30}
-              color={liked ? "#FF0000" : "#D9D0E3"}
-            /></FavButton>
+            <FavButton activeOpacity={0.5} onPress={() => { handleLike() }}  >
+              <MaterialIcons
+                name={liked ? "favorite" : "favorite-border"}
+                size={30}
+                color={liked ? "#FF0000" : "#D9D0E3"}
+              />
+            </FavButton>
           </ContainerTitle>
           <ContainerAdress>
             <MaterialIcons name="home" size={20} />

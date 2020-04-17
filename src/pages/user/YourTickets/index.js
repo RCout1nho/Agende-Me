@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { FlatList } from 'react-native';
+import React, { useEffect, useState, useCallback } from 'react';
+import { FlatList, RefreshControl } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 import {
-  Container, HeadTitle, ListView, DayContainer,
+  Container, HeadTitle, DayContainer,
   CardContainer, DateContainer, NameContainer, InfoContainer, MonthContainer,
   IconContainer, DayText, MonthText, NameText
 } from './styles';
@@ -36,7 +36,14 @@ function Card({ name = "", day = "", month = "", available = true }) {
   )
 }
 
+function wait(timeout) {
+  return new Promise(resolve => {
+    setTimeout(resolve, timeout);
+  });
+}
+
 export default function YourTickets({ route }) {
+  const [refreshing, setRefreshing] = React.useState(false);
   const [booking, setBooking] = useState([{
     name: "",
     date: {
@@ -48,12 +55,20 @@ export default function YourTickets({ route }) {
     }
   }]);
 
-  useEffect(() => {
-    async function apiGet() {
-      const response = await api.get(`/booking/${route.params._id}`);
+  async function apiGet() {
+    const response = await api.get(`/booking/${route.params._id}`);
 
-      setBooking(response.data);
-    }
+    setBooking(response.data);
+  }
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    apiGet();
+    wait(2000).then(() => setRefreshing(false));
+
+  }, [refreshing])
+
+  useEffect(() => {
 
     apiGet();
   }, []);
@@ -68,6 +83,9 @@ export default function YourTickets({ route }) {
           <Card name={item.company.name} day={item.date.day} month={item.date.month} available={item.company.available} />
         )}
         keyExtractor={item => String(item._id)}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       />
     </Container>
   )

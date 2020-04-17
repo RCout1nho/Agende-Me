@@ -64,7 +64,7 @@ export const BtnRegisterText = styled.Text`
   color: #fff;
 `;
 
-export const BtnLogin = styled.TouchableOpacity`
+export const BtnLogin = styled.TouchableHighlight`
   height: 56px;
   width: 370px;
 

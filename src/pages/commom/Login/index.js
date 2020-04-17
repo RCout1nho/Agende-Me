@@ -91,7 +91,7 @@ function User({ route }) {
             autoCapitalize="none"
             secureTextEntry
           />
-          <SubmitBtn onPress={submit} >
+          <SubmitBtn onPress={submit} activeOpacity={0.5}>
             <SubmitText>LOGIN</SubmitText>
           </SubmitBtn>
         </ScrollView>

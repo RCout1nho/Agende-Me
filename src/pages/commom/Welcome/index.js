@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
 
 import {
   Container, CardContainer, LogoContainer, CardLogo,
@@ -14,12 +14,7 @@ import logo from '../../../assets/logo-G.png';
 
 export default function Welcome() {
   const navigation = useNavigation();
-
-
-  useEffect(() => {
-
-  }, []);
-
+  const [underlay, setUnderlay] = useState(false);
 
   function goToLogin() {
     navigation.navigate("Login");
@@ -49,8 +44,9 @@ export default function Welcome() {
           <BtnRegisterText>REGISTER</BtnRegisterText>
         </BtnRegister>
 
-        <BtnLogin activeOpacity={0.8} onPress={goToLogin} >
-          <BtnLoginText>LOGIN</BtnLoginText>
+        <BtnLogin underlayColor="#3BC365" onPressOut={() => { goToLogin(); setUnderlay(false) }} onPressIn={() => { setUnderlay(true) }} activeOpacity={0.5} delayPressOut={0.5}
+        >
+          <BtnLoginText style={{ color: underlay ? "#fff" : "#3BC365" }} >LOGIN</BtnLoginText>
         </BtnLogin>
       </CardContainer>
     </Container>
