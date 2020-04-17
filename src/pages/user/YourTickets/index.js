@@ -37,7 +37,7 @@ function Card({ name = "", day = "", month = "", available = true }) {
 }
 
 export default function YourTickets({ route }) {
-  const [booking, setBooking] = useState({
+  const [booking, setBooking] = useState([{
     name: "",
     date: {
       day: "",
@@ -46,7 +46,7 @@ export default function YourTickets({ route }) {
     company: {
       available: true
     }
-  });
+  }]);
 
   useEffect(() => {
     async function apiGet() {
@@ -61,7 +61,7 @@ export default function YourTickets({ route }) {
     <Container>
       <StatusBar />
       <HeadTitle>Agenda</HeadTitle>
-      <SearchBar placeholder="pesquise seus horários" marginTop={15} />
+      <SearchBar placeholder="pesquise seus horários" marginTop={15} marginBottom={30} />
       <FlatList
         data={booking}
         renderItem={({ item }) => (

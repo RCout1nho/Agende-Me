@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function SearchBar({ placeholder, marginTop = 0 }) {
+export default function SearchBar({ placeholder, marginTop = 0, marginBottom = 0 }) {
 
   const styles = StyleSheet.create({
     searchBar: {
@@ -17,7 +17,8 @@ export default function SearchBar({ placeholder, marginTop = 0 }) {
       justifyContent: 'space-between',
       alignItems: 'center',
       paddingHorizontal: 20,
-      marginTop
+      marginTop,
+      marginBottom
     },
     textInput: {
       fontSize: 15,
