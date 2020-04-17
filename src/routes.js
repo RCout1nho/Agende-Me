@@ -6,14 +6,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
 
-import Welcome from './pages/Welcome';
-import Places from './pages/Places';
-import Schedule from './pages/Schedule';
-import Ticket from './pages/Ticket';
-import Profile from './pages/Profile';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Categories from './pages/Categories';
+import Welcome from './pages/commom/Welcome';
+import Places from './pages/user/Places';
+import Schedule from './pages/user/Schedule';
+import Ticket from './pages/user/Ticket';
+import Profile from './pages/user/Profile';
+import Login from './pages/commom/Login';
+import Register from './pages/commom/Register';
+import Categories from './pages/user/Categories';
 
 import grid from './assets/grid.png';
 

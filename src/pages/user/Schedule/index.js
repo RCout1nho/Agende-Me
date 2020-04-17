@@ -16,12 +16,12 @@ import {
   Adress, ContainerDropdown, ScheduleButton, TextBox, Content, ImageContainer
 } from './styles';
 
-import getDays from '../../utils/getDays';
-import getSchedules from '../../utils/getSchedules';
+import getDays from '../../../utils/getDays';
+import getSchedules from '../../../utils/getSchedules';
 
-import StatusBar from '../../components/StatusBar';
+import StatusBar from '../../../components/StatusBar';
 
-import api from '../../services/api';
+import api from '../../../services/api';
 
 export default function Shedule({ route }) {
   const [dialogVisible, setDialogVisible] = useState(false);

@@ -4,8 +4,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { TextInput } from 'react-native-paper';
 import Dialog from 'react-native-dialog';
 
-import api from '../../services/api';
-import logo from '../../assets/logo-S.png';
+import api from '../../../services/api';
+import logo from '../../../assets/logo-S.png';
 
 import {
   Container, Form, SubmitBtn, SubmitText

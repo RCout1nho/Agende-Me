@@ -3,19 +3,19 @@ import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { IconButton } from 'react-native-paper';
 
-import StatusBar from '../../components/StatusBar';
+import StatusBar from '../../../components/StatusBar';
 import {
   Container, HeadLogo, Title,
   TitleContainer, ShowPlacesText, ShowPlacesContainer, HeadLogoContainer,
   Head, HeadButtonContainer
 } from './styles';
 
-import SearchBar from '../../components/SearchBar';
-import Card from '../../components/Card';
+import SearchBar from '../../../components/SearchBar';
+import Card from '../../../components/Card';
 
-import logo from '../../assets/logo-S.png';
+import logo from '../../../assets/logo-S.png';
 
-import api from '../../services/api';
+import api from '../../../services/api';
 
 export default function Places({ route }) {
   const [places, setPlaces] = useState([]);

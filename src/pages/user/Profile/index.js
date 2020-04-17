@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ScrollView } from 'react-native';
 
-import StatusBar from '../../components/StatusBar';
+import StatusBar from '../../../components/StatusBar';
 import {
   Container, HeaderTitle, UsernameCard, CardText,
   Option, OptionsCard, IconContainer, OptionNameContainer, MyDivider,

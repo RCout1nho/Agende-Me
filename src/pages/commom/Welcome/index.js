@@ -8,8 +8,8 @@ import {
   BtnRegister, BtnRegisterText, BtnLogin, BtnLoginText
 } from './styles';
 
-import background from '../../assets/background.png';
-import logo from '../../assets/logo-G.png';
+import background from '../../../assets/background.png';
+import logo from '../../../assets/logo-G.png';
 
 
 export default function Welcome() {

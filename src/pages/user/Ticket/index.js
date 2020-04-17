@@ -2,10 +2,10 @@ import React from 'react';
 //import QRCode from 'react-native-qrcode-svg';
 import { QRCode } from 'react-native-custom-qr-codes';
 
-import StatusBar from '../../components/StatusBar';
+import StatusBar from '../../../components/StatusBar';
 import { Container, HeadLogo, Title, Code, BtnSave, BtnText } from './styles';
 
-import logo from '../../assets/logo-S.png';
+import logo from '../../../assets/logo-S.png';
 
 export default function Ticket() {
   return (
