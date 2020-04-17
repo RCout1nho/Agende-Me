@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { MaterialIcons, Entypo } from '@expo/vector-icons';
+import { MaterialIcons, Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Welcome from './pages/commom/Welcome';
 import Places from './pages/user/Places';
@@ -14,6 +14,8 @@ import Profile from './pages/user/Profile';
 import Login from './pages/commom/Login';
 import Register from './pages/commom/Register';
 import Categories from './pages/user/Categories';
+import ScanTickets from './pages/company/ScanTickets';
+import YourTickets from './pages/user/YourTickets';
 
 import grid from './assets/grid.png';
 
@@ -38,6 +40,13 @@ function Tabs({ route }) {
           <Entypo name="grid" size={24} color={color} />
         )
       }} />
+      <Tab.Screen name="Your Tickets" component={YourTickets} options={{
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="ticket-account" size={25} color={color} />
+        )
+      }}
+        initialParams={{ _id }}
+      />
       <Tab.Screen name="Profile" component={Profile} options={{
         tabBarIcon: ({ color }) => (
           <MaterialIcons name="account-circle" size={25} color={color} />
@@ -156,6 +165,7 @@ export default function Routes() {
               <Stack.Screen name="Places" component={Places} options={{ headerShown: false }} />
               <Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} initialParams={{ user_id: state._id }} />
               <Stack.Screen name="Ticket" component={Ticket} options={{ headerShown: false }} />
+              <Stack.Screen name="ScanTickets" component={ScanTickets} options={{ headerShown: false }} />
             </>
           }
         </Stack.Navigator>

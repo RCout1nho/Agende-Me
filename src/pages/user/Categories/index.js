@@ -7,8 +7,8 @@ import {
   CardCounterContainer, CardTitle, CardTitleContainer, Line, Head, HeadButtonContainer
 } from './styles';
 
-import StatusBar from '../../components/StatusBar';
-import SearchBar from '../../components/SearchBar';
+import StatusBar from '../../../components/StatusBar';
+import SearchBar from '../../../components/SearchBar';
 
 import logo from '../../../assets/logo-S.png';
 import supermarketImg from '../../../assets/supermarket.png';
@@ -16,7 +16,7 @@ import bankImg from '../../../assets/bank.png';
 import fastFoodImg from '../../../assets/fastFood.png';
 import restaurantImg from '../../../assets/restaurant.png';
 
-import api from '../../services/api';
+import api from '../../../services/api';
 
 function MyCard({ name = "", count = "0", logo, onPress }) {
   return (

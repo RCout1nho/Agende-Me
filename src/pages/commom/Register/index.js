@@ -12,7 +12,7 @@ import {
   AddressContainer, Address1, Address2, TextStructure
 } from './styles';
 
-import api from '../../services/api';
+import api from '../../../services/api';
 
 const TopTab = createMaterialTopTabNavigator();
 
