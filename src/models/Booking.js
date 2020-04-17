@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 
 const BookingSchema = new mongoose.Schema({
-  date: String,
-  init_hour: String,
+  date: {
+    day: String,
+    month: String
+  },
+  hour: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

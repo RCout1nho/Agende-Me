@@ -8,8 +8,6 @@ const routes = express.Router();
 const UserController = require('./controllers/UserController');
 const CompanyController = require('./controllers/CompanyController');
 const BookingController = require('./controllers/BookingController');
-const UserDashboardController = require('./controllers/UserDashboardController');
-const CompanyDashboardController = require('./controllers/CompanyDashboardController');
 const AuthenticationController = require('./controllers/AuthenticationController');
 
 const upload = multer(uploadConfig);
@@ -21,10 +19,9 @@ routes.get('/user', UserController.index);
 routes.post('/company', upload.single('photo'), CompanyController.store);
 routes.get('/company', CompanyController.index);
 
-routes.post('/company/:company_id/bookings', BookingController.store);
-
-routes.get('/user_dashboard', UserDashboardController.show);
-routes.get('/company_dashboard', CompanyDashboardController.show);
+routes.post('/booking/:company', BookingController.store);
+routes.get('/booking/:user', BookingController.show);
+routes.get('/booking', BookingController.index);
 
 routes.get('/auth/user', AuthenticationController.auth);
 

@@ -2,19 +2,32 @@ const Booking = require('../models/Booking');
 
 module.exports = {
   async store(req, res) {
-    const { user_id } = req.headers;
-    const { company_id } = req.params;
-    const { date, init_hour } = req.body;
+    const { user } = req.headers;
+    const { hour, date } = req.body;
+    const { company } = req.params;
 
-    const booking = await Booking.create({
-      user: user_id,
-      company: company_id,
-      init_hour,
-      date
+    const response = await Booking.create({
+      date,
+      hour,
+      user,
+      company
     });
 
-    await booking.populate('company').populate('user').execPopulate();
+    await response.populate('company').execPopulate();
 
-    return res.json(booking);
+    return res.json(response);
+  },
+
+  async index(req, res) {
+    const response = await Booking.find();
+    return res.json(response);
+  },
+
+  async show(req, res) {
+    const { user } = req.params;
+
+    const response = await Booking.find({ user }).populate('company').exec();
+
+    return res.json(response);
   }
 }

@@ -63,9 +63,7 @@ module.exports = {
 
   async getById(req, res) {
     const { _id } = req.params;
-    console.log(_id);
     const response = await Company.findById(_id);
-    console.log(response);
 
     return res.json(response);
   }
