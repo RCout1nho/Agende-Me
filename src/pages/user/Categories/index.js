@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import {
   Container, HeadTitle, HeadLogo, HeadLogoContainer, CardsContainer,
   Card, CardImageContainer, CardInfoContainer, CardImage, CardCounter,
-  CardCounterContainer, CardTitle, CardTitleContainer, Line, Head, HeadButtonContainer
+  CardCounterContainer, CardTitle, CardTitleContainer, Line, ShowPlacesContainer, ShowPlacesText
 } from './styles';
 
 import StatusBar from '../../../components/StatusBar';
@@ -65,6 +65,9 @@ export default function Categories() {
       </HeadLogoContainer>
       <HeadTitle>Categorias</HeadTitle>
       <SearchBar placeholder="Pesquise por categoria" marginTop={15} />
+      <ShowPlacesContainer activeOpacity={0.5} >
+        <ShowPlacesText onPress={() => { navigation.navigate('Map') }} >Ver locais próximos</ShowPlacesText>
+      </ShowPlacesContainer>
 
       <CardsContainer>
         <Line>

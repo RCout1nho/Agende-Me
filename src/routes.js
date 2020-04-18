@@ -16,8 +16,7 @@ import Register from './pages/commom/Register';
 import Categories from './pages/user/Categories';
 import ScanTickets from './pages/company/ScanTickets';
 import YourTickets from './pages/user/YourTickets';
-
-import grid from './assets/grid.png';
+import Map from './pages/user/Map';
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -173,6 +172,7 @@ export default function Routes() {
               <Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} initialParams={{ user_id: state._id }} />
               <Stack.Screen name="Ticket" component={Ticket} options={{ headerShown: false }} />
               <Stack.Screen name="ScanTickets" component={ScanTickets} options={{ headerShown: false }} />
+              <Stack.Screen name="Map" component={Map} />
             </>
           }
         </Stack.Navigator>

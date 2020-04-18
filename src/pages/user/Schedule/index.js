@@ -117,7 +117,7 @@ export default function Shedule({ route }) {
                 {address.city}, {address.UF}
               </TextAdress>
               <TextAdress>
-                Bairro {address.burgh}, Rua {address.street}, Número {address.num}
+                Bairro {address.burgh}, {address.street}, Número {address.num}
               </TextAdress>
             </Adress>
           </ContainerAdress>

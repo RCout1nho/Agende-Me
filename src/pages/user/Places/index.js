@@ -57,9 +57,6 @@ export default function Places({ route }) {
       </TitleContainer>
 
       <SearchBar placeholder="Pesquise um estabelecimento" marginTop={20} />
-      <ShowPlacesContainer activeOpacity={0.5} >
-        <ShowPlacesText>Ver locais próximos</ShowPlacesText>
-      </ShowPlacesContainer>
 
       <FlatList
         data={places}

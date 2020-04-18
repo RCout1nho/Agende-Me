@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Paragraph } from 'react-native-paper';
 
 export const Container = styled.View`
   flex: 1;
@@ -90,4 +91,15 @@ export const HeadButtonContainer = styled.View`
   justify-content: center;
   align-items: center;
   height: 100%;
+`;
+
+export const ShowPlacesContainer = styled.TouchableOpacity`
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
+
+export const ShowPlacesText = styled(Paragraph)`
+  color: #3BC365;
+  font-size: 17px;
 `;

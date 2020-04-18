@@ -36,7 +36,8 @@ export const ShowPlacesContainer = styled.TouchableOpacity`
 
 export const ShowPlacesText = styled(Paragraph)`
   color: #3BC365;
-  font-size: 17px;`;
+  font-size: 17px;
+`;
 
 
 export const Head = styled.View`
