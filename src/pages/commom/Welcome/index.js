@@ -34,11 +34,12 @@ export default function Welcome() {
           <Image source={logo} style={{ width: 138, height: 138 }} />
         </CardLogo>
         <CardTitle>
-          <CardTitleText>Evite aglomerações!</CardTitleText>
+          <CardTitleText>Agende.Me</CardTitleText>
         </CardTitle>
         <CardDescription>
-          <CardDescriptionText>When placing an order, select the option “Contactless delivery” and
-            the courier will leave your order at the door.</CardDescriptionText>
+          <CardDescriptionText>Esperar em filas e ainda correr o risco de ser
+          contaminado pelo covid-19 é coisa do passado, faça sua conta e use no app!
+          </CardDescriptionText>
         </CardDescription>
         <BtnRegister activeOpacity={0.8} onPress={goToRegister} >
           <BtnRegisterText>CADASTRE-SE</BtnRegisterText>

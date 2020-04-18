@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
-import { YellowBox, View, ScrollView } from 'react-native';
+import { YellowBox, View, ScrollView, Image, Text } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { AntDesign } from '@expo/vector-icons'
 import { TextInput } from 'react-native-paper';
 import Dialog from 'react-native-dialog';
 
 import api from '../../../services/api';
 import logo from '../../../assets/logo-S.png';
+import backImage from '../../../assets/background.png';
 
 import {
   Container, Form, SubmitBtn, SubmitText
@@ -19,7 +21,7 @@ const TopTab = createMaterialTopTabNavigator();
 
 const theme = {
   colors: {
-    primary: '#3BC365'
+    primary: '#2D0C57'
   }
 }
 
@@ -65,16 +67,20 @@ function User({ route }) {
   }
 
   return (
-    <View style={{ flex: 1 }} >
+    <View style={{ flex: 1, backgroundColor: '#97FFB7' }} >
+      <Image source={backImage} style={{ position: 'absolute', height: '100%', width: '100%' }} />
+      <Text style={{ textAlign: 'center', fontSize: 40, color: '#fff', margin: 'auto', fontWeight: 'bold', textShadowColor: '#2D0C57', textShadowRadius: 10 }}>
+        Faça seu Login
+      </Text>
       <Form >
         <ScrollView >
           <MyDialog />
           <TextInput
             label='Email'
-            mode='outlined'
+            mode='flat'
             underlineColor='#3BC365'
             theme={theme}
-            style={{ marginVertical: 15 }}
+            style={{ marginVertical: 15, backgroundColor: '#fff', fontSize: 17 }}
             onChangeText={text => setEmail(text)}
             value={email}
             keyboardType="email-address"
@@ -82,10 +88,10 @@ function User({ route }) {
           />
           <TextInput
             label='Senha'
-            mode='outlined'
+            mode='flat'
             underlineColor='#3BC365'
             theme={theme}
-            style={{ marginVertical: 15 }}
+            style={{ marginVertical: 15, backgroundColor: '#fff' }}
             onChangeText={text => setPassword(text)}
             value={password}
             autoCapitalize="none"
@@ -102,24 +108,25 @@ function User({ route }) {
 
 function Company() {
   return (
-    <View style={{ flex: 1 }} >
+    <View style={{ flex: 1, backgroundColor: '#97FFB7' }} >
+      <Image source={backImage} style={{ position: 'absolute', height: '100%', width: '100%' }} />
       <Form >
         <ScrollView >
           <TextInput
             label='Email'
-            mode='outlined'
+            mode='flat'
             underlineColor='#3BC365'
             theme={theme}
-            style={{ marginVertical: 15 }}
+            style={{ marginVertical: 15, backgroundColor: '#fff' }}
             keyboardType="email-address"
             autoCapitalize="none"
           />
           <TextInput
             label='Senha'
-            mode='outlined'
+            mode='flat'
             underlineColor='#3BC365'
             theme={theme}
-            style={{ marginVertical: 15 }}
+            style={{ marginVertical: 15, backgroundColor: '#fff' }}
             autoCapitalize="none"
             secureTextEntry
           />
@@ -139,7 +146,7 @@ function MyTabs({ AuthContext }) {
         backgroundColor: '#F8F8F8'
       },
       indicatorStyle: {
-        backgroundColor: '#3BC365'
+        backgroundColor: '#2D0C57'
       }
     }} >
       <TopTab.Screen name="User" component={User} initialParams={{ AuthContext }} options={{

@@ -22,42 +22,43 @@ export const ImageContainer = styled.View`
 export const ContainerMarket = styled.View`
   background: #F6F5F5;
   height: 55%;
-  z-index: 1;
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
   elevation: 20;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const ContainerTitle = styled.View`
   flex-direction: row;
-  height: 41px;
-  width: 374px;
+  width: 90%;
   margin-top: 37px;
-  margin-left: 20px;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const ContainerAdress = styled.View`
   border-bottom-width: 1px;
   margin-top:16px;
-  margin-left: 44.5px;
-  margin-right: 44.5px;
   padding-bottom: 10px;
   flex-direction: row;
   align-items: center;
+  width: 90%;
 `;
 
 export const ContainerList = styled.View`
-  height:199px;
-  width:325px;
-  margin-left: 44.5px;
+  width:90%;
+  align-self: center;
 `;
 
 export const ContainerDropdown = styled.View`
+  width: 100%;
+  align-self: center;
 `;
 
 export const FavButton = styled.TouchableOpacity`
-  width: 80px;
-  height: 50px;
+  width: 100%;
+  height: 60px;
   background: #fff;
   border-color: #D9D0E3;
   border-width: 1px;
@@ -67,6 +68,10 @@ export const FavButton = styled.TouchableOpacity`
   elevation: 10;
 `;
 
+export const FavContainer = styled.View`
+  width: 20%;
+`;
+
 export const ScheduleButton = styled.TouchableOpacity`
   width: 80%;
   height: 60px;
@@ -74,18 +79,18 @@ export const ScheduleButton = styled.TouchableOpacity`
   justify-content: center;
   border-radius: 13px;
   margin: auto;
-  margin-top:22px;
   elevation: 5;
+  margin-bottom: 10px;
 `;
 
 export const NameMarket = styled.View`
-  height: 41px;
+  width: 80%;
 `;
 
 export const TextTitle = styled.Text`
   font-size:30px;
-  padding-right: 20px;
   font-weight:bold;
+  width: 100%;
 `;
 
 export const TextAdress = styled.Text`
@@ -101,4 +106,17 @@ export const TextBox = styled.Text`
 
 export const Adress = styled.View`
   margin-left: 3px;
+`;
+
+export const NoPosterContainer = styled.View`
+  width: 100%;
+  height: 100%;
+  background: #9C9C9C;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const NoPosterText = styled.Text`
+  font-size: 25px;
+  font-weight: bold;
 `;

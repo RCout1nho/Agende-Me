@@ -7,7 +7,7 @@ import {
   Container, HeadTitle, DayContainer,
   CardContainer, DateContainer, NameContainer, InfoContainer, MonthContainer,
   IconContainer, DayText, MonthText, NameText, NoTicketsContainer, NoTicketsText,
-  NoTicketsSubText
+  NoTicketsSubText, CardView
 } from './styles';
 
 import StatusBar from '../../../components/StatusBar';
@@ -17,23 +17,27 @@ import api from '../../../services/api';
 
 function Card({ name = "", day = "", month = "", available = true, onPress }) {
   return (
-    <CardContainer activeOpacity={0.5} style={{ backgroundColor: available ? '#3BC365' : '#FF5252' }} onPress={onPress} >
-      <DateContainer>
-        <DayContainer>
-          <DayText>{day}</DayText>
-        </DayContainer>
-        <MonthContainer>
-          <MonthText>{month}</MonthText>
-        </MonthContainer>
-      </DateContainer>
-      <InfoContainer>
-        <NameContainer>
-          <NameText>{name}</NameText>
-        </NameContainer>
-        <IconContainer>
-          <SimpleLineIcons name={available ? "lock-open" : "lock"} size={40} color="#262F56" />
-        </IconContainer>
-      </InfoContainer>
+    <CardContainer activeOpacity={0.5} style={{ backgroundColor: available ? '#3BC365' : '#FF5252' }} onPress={available ? onPress : () => { }} >
+      <CardView colors={available ? ['#3BC365', '#97FFB7'] : ['#FFADAD', '#FF5252']}
+        start={{ x: 0, y: 0.75 }} end={{ x: 1, y: 0.25 }} locations={[0, 1]}
+      >
+        <DateContainer>
+          <DayContainer>
+            <DayText>{day}</DayText>
+          </DayContainer>
+          <MonthContainer>
+            <MonthText>{month}</MonthText>
+          </MonthContainer>
+        </DateContainer>
+        <InfoContainer>
+          <NameContainer>
+            <NameText>{name}</NameText>
+          </NameContainer>
+          <IconContainer>
+            <SimpleLineIcons name={available ? "lock-open" : "lock"} size={40} color="#262F56" />
+          </IconContainer>
+        </InfoContainer>
+      </CardView>
     </CardContainer>
   )
 }

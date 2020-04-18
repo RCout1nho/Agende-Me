@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export const Container = styled.View`
   flex: 1;
@@ -18,8 +19,6 @@ export const CardContainer = styled.TouchableOpacity`
   width: 90%;
   height: 115px;
   align-self: center;
-  flex-direction: row;
-  padding: 20px;
   margin-bottom: 15px;
 `;
 
@@ -29,6 +28,16 @@ export const DateContainer = styled.View`
   border-radius: 7px;
 `;
 
+export const CardView = styled(LinearGradient)`
+  width: 100%;
+  height: 100%;
+  background: #3BC365;
+  border-radius: 17px;
+  align-self: center;
+  flex-direction: row;
+  padding: 20px;
+  margin-bottom: 15px;
+`;
 export const InfoContainer = styled.View`
   flex: 0.8;
   flex-direction: row;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import CoronaCard from '../../../components/CoronaCard';
 
 import {
   Container, HeadTitle, HeadLogo, HeadLogoContainer, CardsContainer,
@@ -22,7 +23,7 @@ function MyCard({ name = "", count = "0", logo, onPress }) {
   return (
     <Card activeOpacity={0.5} onPress={onPress} >
       <CardImageContainer>
-        <CardImage source={logo} />
+        <CardImage source={logo} style={{ borderTopLeftRadius: 8, borderTopRightRadius: 8 }} />
       </CardImageContainer>
       <CardInfoContainer>
         <CardTitleContainer>
@@ -35,7 +36,6 @@ function MyCard({ name = "", count = "0", logo, onPress }) {
     </Card>
   )
 }
-
 
 
 export default function Categories() {
@@ -60,6 +60,7 @@ export default function Categories() {
   return (
     <Container>
       <StatusBar />
+      <CoronaCard />
       <HeadLogoContainer>
         <HeadLogo source={logo} />
       </HeadLogoContainer>

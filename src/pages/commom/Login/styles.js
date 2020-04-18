@@ -21,11 +21,12 @@ export const SubmitBtn = styled.TouchableOpacity`
   margin-top: 20px;
   width: 90%;
   height: 56px;
-  background: #3BC365;
+  background: #319851;
   border-radius: 8px;
   justify-content: center;
   align-items: center;
   align-self: center;
+  elevation: 5;
 `;
 
 export const SubmitText = styled.Text`

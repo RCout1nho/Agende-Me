@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Image, YellowBox, View } from 'react-native';
+import { Image, YellowBox, View, ScrollView } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
 import Dialog from 'react-native-dialog';
 import { useNavigation } from '@react-navigation/native';
 
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, Feather } from '@expo/vector-icons';
 
 YellowBox.ignoreWarnings([
   'componentWillUpdate has been renamed',
@@ -14,7 +14,7 @@ YellowBox.ignoreWarnings([
 
 import {
   Container, ContainerTitle, NameMarket, FavButton, TextTitle, ContainerMarket, ContainerList, ContainerAdress, TextAdress,
-  Adress, ContainerDropdown, ScheduleButton, TextBox, Content, ImageContainer
+  Adress, ContainerDropdown, ScheduleButton, TextBox, Content, ImageContainer, FavContainer, NoPosterContainer, NoPosterText
 } from './styles';
 
 import getDays from '../../../utils/getDays';
@@ -92,7 +92,13 @@ export default function Shedule({ route }) {
       <MyDialog />
       <Content>
         <ImageContainer>
-          <Image source={{ uri: place.photo_url }} style={{ width: '100%', height: '100%' }} />
+          {place.haveImage ?
+            <Image source={{ uri: place.photo_url }} style={{ width: '100%', height: '100%' }} />
+            :
+            <NoPosterContainer>
+              <Feather name="camera-off" color="#BEBEBE" size={80} />
+            </NoPosterContainer>
+          }
         </ImageContainer>
         <View  >
 
@@ -102,13 +108,15 @@ export default function Shedule({ route }) {
             <NameMarket>
               <TextTitle>{place.name}</TextTitle>
             </NameMarket>
-            <FavButton activeOpacity={0.5} onPress={() => { handleLike() }}  >
-              <MaterialIcons
-                name={liked ? "favorite" : "favorite-border"}
-                size={30}
-                color={liked ? "#FF0000" : "#D9D0E3"}
-              />
-            </FavButton>
+            <FavContainer>
+              <FavButton activeOpacity={0.5} onPress={() => { handleLike() }}  >
+                <MaterialIcons
+                  name={liked ? "favorite" : "favorite-border"}
+                  size={30}
+                  color={liked ? "#FF0000" : "#D9D0E3"}
+                />
+              </FavButton>
+            </FavContainer>
           </ContainerTitle>
           <ContainerAdress>
             <MaterialIcons name="home" size={20} />
@@ -121,49 +129,52 @@ export default function Shedule({ route }) {
               </TextAdress>
             </Adress>
           </ContainerAdress>
-          <ContainerList>
-            <ContainerDropdown>
-              <Dropdown
-                label='Escolha o dia'
-                data={getDays()}
-                itemPadding={8}
-                fontSize={21}
-                baseColor={"#868686"}
-                containerStyle={({
-                  borderRadius: 13,
-                  height: 56,
-                  marginTop: 21,
-                  backgroundColor: '#FFFFFF',
-                  justifyContent: "center",
-                  paddingLeft: 10
-                })}
-                onChangeText={text => setDate(text)}
-                value={date}
-              />
-              <Dropdown
-                label='Escolha o horário'
-                data={getSchedules()}
-                itemPadding={8}
-                fontSize={21}
-                baseColor={"#868686"}
-                containerStyle={({
-                  borderRadius: 13,
-                  height: 56,
-                  marginTop: 21,
-                  backgroundColor: '#FFFFFF',
-                  justifyContent: "center",
-                  paddingLeft: 10
-                })}
-                onChangeText={text => setHour(text)}
-                value={hour}
-              />
-              <ScheduleButton activeOpacity={0.5} onPress={booking} >
-                <TextBox>
-                  Schedule
+          <ScrollView style={{ width: '100%' }} >
+            <ContainerList>
+              <ContainerDropdown>
+                <Dropdown
+                  label='Escolha o dia'
+                  data={getDays()}
+                  itemPadding={8}
+                  fontSize={21}
+                  baseColor={"#868686"}
+                  containerStyle={({
+                    borderRadius: 13,
+                    height: 56,
+                    backgroundColor: '#FFFFFF',
+                    justifyContent: "center",
+                    paddingHorizontal: 15,
+                    marginTop: 20
+                  })}
+                  onChangeText={text => setDate(text)}
+                  value={date}
+                />
+                <Dropdown
+                  label='Escolha o horário'
+                  data={getSchedules()}
+                  itemPadding={8}
+                  fontSize={21}
+                  baseColor={"#868686"}
+                  containerStyle={({
+                    borderRadius: 13,
+                    height: 56,
+                    marginTop: 21,
+                    backgroundColor: '#FFFFFF',
+                    justifyContent: "center",
+                    marginBottom: 30,
+                    paddingHorizontal: 15
+                  })}
+                  onChangeText={text => setHour(text)}
+                  value={hour}
+                />
+                <ScheduleButton activeOpacity={0.5} onPress={booking} >
+                  <TextBox>
+                    Agendar
                </TextBox>
-              </ScheduleButton>
-            </ContainerDropdown>
-          </ContainerList>
+                </ScheduleButton>
+              </ContainerDropdown>
+            </ContainerList>
+          </ScrollView>
         </ContainerMarket>
       </Content>
     </Container>
