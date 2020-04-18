@@ -1,10 +1,13 @@
 const Booking = require('../models/Booking');
+const formatDate = require('../utils/formatDate');
 
 module.exports = {
   async store(req, res) {
     const { user } = req.headers;
-    const { hour, date } = req.body;
+    const { hour, day } = req.body;
     const { company } = req.params;
+
+    const date = formatDate(day);
 
     const response = await Booking.create({
       date,

@@ -7,7 +7,11 @@ const CompanySchema = new mongoose.Schema({
     burgh: String,
     city: String,
     UF: String,
-    num: String
+    num: String,
+    coordinates: {
+      latitude: Number,
+      longitude: Number
+    }
   },
   contact: String,
   driveThru: Boolean,

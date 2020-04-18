@@ -2,17 +2,23 @@ const Company = require('../models/Company');
 
 module.exports = {
   async store(req, res) {
-    const { filename } = req.file;
     const { name, contact, driveThru, password, serviceType, maxLot, available, haveImage, type,
-      city, UF, burgh, street, num
+      city, UF, burgh, street, num, coordinates
     } = req.body;
+    let filename;
+    try {
+      filename = req.file.filename;
+    } catch (err) {
+
+    }
 
     const address = {
       city,
       UF,
       burgh,
       street,
-      num
+      num,
+      coordinates: JSON.parse(coordinates)
     };
 
     const company = await Company.create({
@@ -23,7 +29,7 @@ module.exports = {
       password,
       serviceType,
       maxLot,
-      photo: filename,
+      photo: filename ? filename : null,
       available,
       haveImage,
       type,

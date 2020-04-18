@@ -12,7 +12,6 @@ const AuthenticationController = require('./controllers/AuthenticationController
 
 const upload = multer(uploadConfig);
 
-
 routes.post('/user', UserController.store);
 routes.get('/user', UserController.index);
 
