@@ -87,7 +87,7 @@ export default function Map() {
                   }
                   <GoToContainer>
                     <FontAwesome name="send" size={20} color="#3BC365" />
-                    <GoToText>Aagendar</GoToText>
+                    <GoToText>Agendar</GoToText>
                   </GoToContainer>
                 </BottomContainer>
               </CalloutContainer>
