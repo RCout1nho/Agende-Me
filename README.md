@@ -48,7 +48,7 @@ Para mais informações visite [nosso instagram](https://www.instagram.com/agend
 
 Hoje, 19 de abril de 2020, a versão beta do agendeMe foi lançada no github, possuindo apenas a interface do usuário e uma pequena parte da interface da empresa. Está planejado a implementação de diversas features e finalização oficial do app após o resultado do Pandemic Hackfest: Saúde, de forma a finalizá-lo totalmente, permitindo o deploy da API em um servidor como o **Heroku** ou **digitalOcean** e o deploy do app na PlayStore(Android) e posteriormente na AppStore(iOS).
 
-Vale ressaltar que a API e a interface do usuário estão **100% funcionais** , permitindo funções como realizar login, cadastro, visualizar categorias, lugares, geolocalização, agendar um horário e gerar QR Code.
+Vale ressaltar que a API e a interface do usuário estão **100% funcionais** , permitindo funções como realizar login, cadastro, visualizar categorias, lugares, geolocalização, agendar um horário e gerar QR Code. Assim como, a leitura de QR Codes na opção de login como empresa também está sendo feita, porém ainda não possui integração com a API.
 
 ## :gear: Funcionamento
 
