@@ -19,8 +19,8 @@
 
 <p align="center" >
   <a href="#sobre-o-projeto" >Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#sobre-o-projeto" >Esclarecimentos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#Prints" >Prints</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#open_book-esclarecimentos" >Esclarecimentos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#gear-funcionamento" >Funcionamento</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-feito-com" >Feito com</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-como-executar" >Como executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#page_facing_up-licença" >Licença</a>
@@ -43,6 +43,18 @@ O projeto tem o intuito de evitar que aglomerações em estabelecimentos de serv
 No aplicativo, as empresas podem cadastrar a quantidade máxima de pessoas que podem permanecer simultaneamente em seu estabelecimento, já os usuários, podem consultar quais empresas estão disponíveis em determinado horário, e agendar uma "hora" para utilizá-lo, de forma a manter um fluxo organizado de pessoas que utilizam um determinado estabelecimento e evitar a formação de filas, que representam de certa forma um vetor para o corona vírus.
 
 Para mais informações visite [nosso instagram](https://www.instagram.com/agende.me/?hl=pt-br) e assista o nosso [vídeo de pitch](https://www.instagram.com/agende.me/?hl=pt-br).
+
+## :open_book: Esclarecimentos
+
+Hoje, 19 de abril de 2020, a versão beta do agendeMe foi lançada no github, possuindo apenas a interface do usuário e uma pequena parte da interface da empresa. Está planejado a implementação de diversas features e finalização oficial do app após o resultado do Pandemic Hackfest: Saúde, de forma a finalizá-lo totalmente, permitindo o deploy da API em um servidor como o **Heroku** ou **digitalOcean** e o deploy do app na PlayStore(Android) e posteriormente na AppStore(iOS).
+
+Vale ressaltar que a API e a interface do usuário estão **100% funcionais** , permitindo funções como realizar login, cadastro, visualizar categorias, lugares, geolocalização, agendar um horário e gerar QR Code.
+
+## :gear: Funcionamento
+
+<h1 align="center" >
+  <img alt="Agende.Me" src="./images/Agendeme-gif.gif" heigth="500" width="250" />
+</h1>
 
 ## :rocket: Feito Com
 
