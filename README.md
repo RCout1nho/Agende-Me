@@ -58,6 +58,12 @@ Vale ressaltar que a API e a interface do usuário estão **100% funcionais** , 
 
 ## :rocket: Feito Com
 
+<h1 align="center" >
+  <img alt="Agende.Me" src="./images/expo.png" width="90" height="90" />
+  <img alt="Agende.Me" src="./images/react.png" width="150" height="100" />
+  <img alt="Agende.Me" src="./images/nodeJS.png" width="100" height="100" />
+</h1>
+
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <h4>Para o Backend</h4>
