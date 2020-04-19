@@ -28,7 +28,7 @@
 
 
 ## :mag: Sobre o Projeto 
-Esse projeto foi desenvolvido tecnicamante por **Ricardo Coutinho**:[linkedIn](https://www.linkedin.com/in/rcout1nho/)-[github](https://github.com/RCout1nho) e **Orlando Vandres**[linkedIn](www.linkedin.com/in/orlando-vandres)-[github](https://github.com/Vandrekad)
+Esse projeto foi desenvolvido tecnicamante por **Ricardo Coutinho**:[linkedIn](https://www.linkedin.com/in/rcout1nho/)-[github](https://github.com/RCout1nho) e **Orlando Vandres**:[linkedIn](https://www.linkedin.com/in/orlando-vandres)-[github](https://github.com/Vandrekad)
 como uma solução para o hackaton [Pandemic Hackfest: Saúde](http://www.amazonhackfest.com/) do Ministério Público de Estado do Amazonas.
 
 Os Designers responsáveis pelas interfaces foram **Nelson Fernandes**:[linkedIn](https://www.linkedin.com/in/nelsonffernandes/) , **Charlene Gualberto**-[linkedIn](https://www.linkedin.com/in/charlenegualberto)-[behance](https://www.behance.net/charleneny) e **Wesley Albuquerque**:[linkedIn](https://www.linkedin.com/in/wesley-hip%C3%B3lito-albuquerque-a03779135)-[Behance](https://www.behance.net/wesleyalbuque).
