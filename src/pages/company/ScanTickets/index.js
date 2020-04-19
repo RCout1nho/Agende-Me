@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import { Text, View, StyleSheet, Button } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 
 import { Bottom, Left, Center, Right, Top, ReadAgain, TitleText, TitleView } from './styles';
 
@@ -44,6 +44,7 @@ export default function ScanTicket() {
             </Top>
             <Center>
                 <Right />
+                <View style={{ flex: 1, borderWidth: 1, borderColor: '#fff', borderRadius: 5, borderStyle: 'dashed' }} />
                 <Left />
             </Center>
             <Bottom>

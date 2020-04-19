@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, Image } from 'react-native'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
 import { TextInput, HelperText } from 'react-native-paper';
@@ -11,6 +11,8 @@ import {
   Container, Form, SubmitBtn, SubmitText, SectionTitle,
   AddressContainer, Address1, Address2, TextStructure
 } from './styles';
+
+import backImage from '../../../assets/background.png';
 
 import api from '../../../services/api';
 
@@ -77,17 +79,17 @@ function User({ route }) {
   }
 
   return (
-    <ScrollView>
-      <Form  >
+    <Form  >
+      <Image source={backImage} style={{ position: 'absolute', height: '100%', width: '100%' }} />
+      <ScrollView style={{ padding: 20 }} >
         <MyDialog />
         <TextStructure>
           Bem vindo
-        </TextStructure>
+          </TextStructure>
         <TextStructure>
           Crie seu cadastro de usuário
-        </TextStructure>
+          </TextStructure>
         <View style={{ alignItems: 'center' }}>
-          <MaterialIcons name="account-circle" size={160} color="#3BC365" />
         </View>
         <View>
           <TextInput
@@ -97,6 +99,7 @@ function User({ route }) {
             onChangeText={text => setName(text)}
             value={name}
             autoCapitalize="words"
+            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <HelperText type="error" visible={wrongName} >
             Senhas não coincidem
@@ -111,6 +114,7 @@ function User({ route }) {
             value={email}
             keyboardType="email-address"
             autoCapitalize="none"
+            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <HelperText type="error" visible={wrongEmail} >
             Senhas não coincidem
@@ -125,6 +129,7 @@ function User({ route }) {
             value={password}
             autoCapitalize="none"
             secureTextEntry
+            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <HelperText type="error" visible={wrongPassword} >
             Senhas não coincidem
@@ -139,33 +144,31 @@ function User({ route }) {
             value={password2}
             autoCapitalize="none"
             secureTextEntry
+            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <HelperText type="error" visible={wrongPassword} >
             Senhas não coincidem
         </HelperText>
         </View>
         <SubmitBtn onPress={registerUser} activeOpacity={0.5} >
-          <SubmitText >REGISTER</SubmitText>
+          <SubmitText >REGISTRAR</SubmitText>
         </SubmitBtn>
-      </Form>
-    </ScrollView>
-
+      </ScrollView>
+    </Form>
   )
 }
 
 function Company() {
   return (
-    <ScrollView>
-      <Form>
+    <Form>
+      <Image source={backImage} style={{ position: 'absolute', height: '100%', width: '100%' }} />
+      <ScrollView style={{ padding: 20 }} >
         <TextStructure>
           Bem vindo
         </TextStructure>
         <TextStructure>
           Crie seu cadastro de empresa
         </TextStructure>
-        <View style={{ alignItems: 'center' }}>
-          <MaterialIcons name="business" size={160} color="#2D0C57" />
-        </View>
         <SectionTitle>Endereço</SectionTitle>
         <AddressContainer>
           <Address1>
@@ -173,14 +176,13 @@ function Company() {
               label='Cidade'
               mode='outlined'
               theme={theme}
-              style={{ width: '70%' }}
+              style={{ width: '70%', backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
             <TextInput
               label='UF'
               mode='outlined'
-
               theme={theme}
-              style={{ width: '20%' }}
+              style={{ width: '20%', backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
           </Address1>
 
@@ -190,21 +192,21 @@ function Company() {
               mode='outlined'
 
               theme={theme}
-              style={{ flex: 1, paddingRight: 5 }}
+              style={{ flex: 1, paddingRight: 5, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
             <TextInput
               label='Rua'
               mode='outlined'
 
               theme={theme}
-              style={{ flex: 1, paddingRight: 5 }}
+              style={{ flex: 1, paddingRight: 5, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
             <TextInput
               label='CEP'
               mode='outlined'
 
               theme={theme}
-              style={{ flex: 1 }}
+              style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
           </Address2>
 
@@ -215,14 +217,14 @@ function Company() {
               mode='outlined'
 
               theme={theme}
-              style={{ width: '20%', paddingRight: 5 }}
+              style={{ width: '20%', paddingRight: 5, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
             <TextInput
               label='Telefone'
               mode='outlined'
 
               theme={theme}
-              style={{ width: '80%' }}
+              style={{ width: '80%', backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
           </Address2>
         </AddressContainer>
@@ -231,26 +233,26 @@ function Company() {
             label='Email'
             mode='outlined'
             theme={theme}
-            style={{ marginTop: 15 }}
+            style={{ marginTop: 15, backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <TextInput
             label='Senha'
             mode='outlined'
             theme={theme}
-            style={{ marginTop: 15 }}
+            style={{ marginTop: 15, backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <TextInput
             label='Senha novamente'
             mode='outlined'
             theme={theme}
-            style={{ marginTop: 15 }}
+            style={{ marginTop: 15, backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
         </View>
         <SubmitBtn>
-          <SubmitText>REGISTER</SubmitText>
+          <SubmitText>REGISTRAR</SubmitText>
         </SubmitBtn>
-      </Form>
-    </ScrollView>
+      </ScrollView>
+    </Form>
   )
 }
 

@@ -6,9 +6,9 @@ export const Container = styled.View`
 `;
 
 export const Form = styled.View`
-  padding: 20px 20px;
-  width: 90%;
-  background-color: #F6F5F5;
+  padding-top: 20px;
+  flex: 1;
+  background-color: #97FFB7;
   align-self: center;
 `;
 

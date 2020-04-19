@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect, useMemo, createContext } from 'react';
-import { Image, AsyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,7 +22,7 @@ const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
 
-function Tabs({ route }) {
+function UserTabs({ route }) {
   const { email, password, name, _id } = route.params;
 
   return (
@@ -61,6 +61,39 @@ function Tabs({ route }) {
   )
 }
 
+function CompanyTabs({ route }) {
+  const { email, password, name, _id } = route.params;
+  return (
+    <Tab.Navigator
+      activeColor="#3BC365"
+      barStyle={{
+        backgroundColor: '#F8F8F8',
+        elevation: 5,
+      }}
+    >
+      <Tab.Screen name="Profile" component={Profile} options={{
+        tabBarIcon: ({ color }) => (
+          <MaterialIcons name="account-circle" size={25} color={color} />
+        ),
+        title: "Perfil"
+      }}
+        initialParams={{ AuthContext, email, password, name, _id }}
+      />
+
+      <Tab.Screen name="ScanTickets" component={ScanTickets} options={{
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="qrcode-scan" size={25} color={color} />
+        ),
+        title: "Scanner"
+      }}
+        initialParams={{ AuthContext, email, password, name, _id }}
+      />
+
+    </Tab.Navigator>
+
+  )
+}
+
 const AuthContext = createContext();
 
 export default function Routes() {
@@ -82,7 +115,8 @@ export default function Routes() {
             email: action.email,
             password: action.password,
             _id: action._id,
-            name: action.name
+            name: action.name,
+            company: action.company
           };
         case 'SIGN_OUT':
           return {
@@ -92,7 +126,8 @@ export default function Routes() {
             email: null,
             password: null,
             _id: null,
-            name: null
+            name: null,
+            company: false
           };
       }
     },
@@ -103,7 +138,8 @@ export default function Routes() {
       email: null,
       password: null,
       _id: null,
-      name: null
+      name: null,
+      company: false
     }
   );
 
@@ -126,7 +162,7 @@ export default function Routes() {
     () => ({
       signIn: async data => {
 
-        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token', password: data.password, email: data.email, name: data.name, _id: data._id });
+        dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token', password: data.password, email: data.email, name: data.name, _id: data._id, company: data.company });
       },
       signOut: () => dispatch({ type: 'SIGN_OUT' }),
       signUp: async data => {
@@ -165,15 +201,18 @@ export default function Routes() {
                 }}
               />
             </>
-            :
-            <>
-              <Stack.Screen name="home" component={Tabs} options={{ headerShown: false }} initialParams={{ email: state.email, password: state.password, name: state.name, _id: state._id }} />
-              <Stack.Screen name="Places" component={Places} options={{ headerShown: false }} />
-              <Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} initialParams={{ user_id: state._id }} />
-              <Stack.Screen name="Ticket" component={Ticket} options={{ headerShown: false }} />
-              <Stack.Screen name="ScanTickets" component={ScanTickets} options={{ headerShown: false }} />
-              <Stack.Screen name="Map" component={Map} />
-            </>
+            : !state.company ?
+              <>
+                <Stack.Screen name="home" component={UserTabs} options={{ headerShown: false }} initialParams={{ email: state.email, password: state.password, name: state.name, _id: state._id }} />
+                <Stack.Screen name="Places" component={Places} options={{ headerShown: false }} />
+                <Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} initialParams={{ user_id: state._id }} />
+                <Stack.Screen name="Ticket" component={Ticket} options={{ headerShown: false }} />
+                <Stack.Screen name="Map" component={Map} />
+              </>
+              :
+              <>
+                <Stack.Screen name="home" component={CompanyTabs} options={{ headerShown: false }} initialParams={{ email: state.email, password: state.password, name: state.name, _id: state._id }} />
+              </>
           }
         </Stack.Navigator>
       </NavigationContainer>
