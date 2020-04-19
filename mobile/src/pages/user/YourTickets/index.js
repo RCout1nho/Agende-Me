@@ -17,7 +17,7 @@ import api from '../../../services/api';
 
 function Card({ name = "", day = "", month = "", available = true, onPress }) {
   return (
-    <CardContainer activeOpacity={0.5} style={{ backgroundColor: available ? '#3BC365' : '#FF5252' }} onPress={available ? onPress : () => { }} >
+    <CardContainer style={{ backgroundColor: available ? '#3BC365' : '#FF5252' }} onPress={available ? onPress : () => { }} >
       <CardView colors={available ? ['#3BC365', '#97FFB7'] : ['#FFADAD', '#FF5252']}
         start={{ x: 0, y: 0.75 }} end={{ x: 1, y: 0.25 }} locations={[0, 1]}
       >
@@ -50,6 +50,7 @@ function wait(timeout) {
 
 export default function YourTickets({ route }) {
   const navigation = useNavigation();
+
   const [refreshing, setRefreshing] = useState(false);
   const [booking, setBooking] = useState([]);
 

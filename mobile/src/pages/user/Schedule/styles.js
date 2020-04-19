@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Dropdown } from 'react-native-material-dropdown';
 
 export const Container = styled.View`
   flex: 1;
@@ -12,7 +13,7 @@ export const Content = styled.View`
   flex: 1;
 ` ;
 
-export const ImageContainer = styled.View`
+export const BrandContainer = styled.View`
   height: 50%;
   width:100%;
   position: absolute;
@@ -56,7 +57,9 @@ export const ContainerDropdown = styled.View`
   align-self: center;
 `;
 
-export const FavButton = styled.TouchableOpacity`
+export const FavButton = styled.TouchableOpacity.attrs({
+  activityOpacity: 0.5,
+})`
   width: 100%;
   height: 60px;
   background: #fff;
@@ -72,7 +75,9 @@ export const FavContainer = styled.View`
   width: 20%;
 `;
 
-export const ScheduleButton = styled.TouchableOpacity`
+export const ScheduleButton = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.5,
+})`
   width: 80%;
   height: 60px;
   background-color: #3BC365;
@@ -116,7 +121,38 @@ export const NoPosterContainer = styled.View`
   align-items: center;
 `;
 
-export const NoPosterText = styled.Text`
-  font-size: 25px;
-  font-weight: bold;
+export const Brand = styled.Image`
+  width: 100%;
+  height: 100%;
 `;
+
+export const DayDropdown = styled(Dropdown).attrs({
+  label: 'Escolha o dia',
+  itemPadding: 8,
+  fontSize: 21,
+  baseColor: '#868686',
+  containerStyle: {
+    borderRadius: 13,
+    height: 56,
+    backgroundColor: '#FFFFFF',
+    justifyContent: "center",
+    paddingHorizontal: 15,
+    marginTop: 20
+  }
+})``;
+
+export const HourDropdown = styled(Dropdown).attrs({
+  label: "Escolha o horário",
+  itemPadding: 8,
+  fontSize: 20,
+  baseColor: "#868686",
+  containerStyle: {
+    borderRadius: 13,
+    height: 56,
+    marginTop: 21,
+    backgroundColor: '#FFFFFF',
+    justifyContent: "center",
+    marginBottom: 30,
+    paddingHorizontal: 15
+  }
+})``;

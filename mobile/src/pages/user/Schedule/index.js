@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Image, YellowBox, View, ScrollView } from 'react-native';
+import { YellowBox, View, ScrollView } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
-import Dialog from 'react-native-dialog';
 import { useNavigation } from '@react-navigation/native';
-
 import { MaterialIcons, Feather } from '@expo/vector-icons';
+import Dialog from 'react-native-dialog';
 
 YellowBox.ignoreWarnings([
   'componentWillUpdate has been renamed',
@@ -13,19 +12,36 @@ YellowBox.ignoreWarnings([
 ]);
 
 import {
-  Container, ContainerTitle, NameMarket, FavButton, TextTitle, ContainerMarket, ContainerList, ContainerAdress, TextAdress,
-  Adress, ContainerDropdown, ScheduleButton, TextBox, Content, ImageContainer, FavContainer, NoPosterContainer, NoPosterText
+  Container, ContainerTitle, NameMarket, FavButton, TextTitle, ContainerMarket,
+  ContainerList, ContainerAdress, TextAdress, Adress, ContainerDropdown,
+  ScheduleButton, TextBox, Content, FavContainer, NoPosterContainer,
+  Brand, BrandContainer, DayDropdown, HourDropdown
 } from './styles';
+
+import StatusBar from '../../../components/StatusBar';
 
 import getDays from '../../../utils/getDays';
 import getSchedules from '../../../utils/getSchedules';
 
-import StatusBar from '../../../components/StatusBar';
-
 import api from '../../../services/api';
+
+function MyDialog({ dialogVisible, setDialogVisible }) {
+  return (
+    <View>
+      <Dialog.Container visible={dialogVisible} >
+        <Dialog.Title>Parabéns!</Dialog.Title>
+        <Dialog.Description>
+          Você foi agendado(a) com sucesso!
+          </Dialog.Description>
+        <Dialog.Button label="OK" onPress={() => { setDialogVisible(false) }} />
+      </Dialog.Container>
+    </View>
+  )
+}
 
 export default function Shedule({ route }) {
   const navigation = useNavigation();
+
   const [dialogVisible, setDialogVisible] = useState(false);
   const [date, setDate] = useState('');
   const [hour, setHour] = useState('');
@@ -42,28 +58,13 @@ export default function Shedule({ route }) {
     num: ""
   });
 
-  function MyDialog() {
-    return (
-      <View>
-        <Dialog.Container visible={dialogVisible} >
-          <Dialog.Title>Parabéns!</Dialog.Title>
-          <Dialog.Description>
-            Você foi agendado(a) com sucesso!
-            </Dialog.Description>
-          <Dialog.Button label="OK" onPress={() => { setDialogVisible(false) }} />
-        </Dialog.Container>
-      </View>
-    )
-  }
-
   useEffect(() => {
-    async function getAPi() {
+    (async () => {
       const response = await api.get(`/company/find/${route.params.company_id}`);
 
       setPlace(response.data);
       setAdress(response.data.address);
-    }
-    getAPi();
+    })()
   }, []);
 
   function handleLike() {
@@ -83,23 +84,22 @@ export default function Shedule({ route }) {
     setDialogVisible(true);
 
     navigation.navigate('Ticket', { id: response.data._id });
-
   }
 
   return (
     <Container>
       <StatusBar />
-      <MyDialog />
+      <MyDialog setDialogVisible={setDialogVisible} dialogVisible={dialogVisible} />
       <Content>
-        <ImageContainer>
+        <BrandContainer>
           {place.haveImage ?
-            <Image source={{ uri: place.photo_url }} style={{ width: '100%', height: '100%' }} />
+            <Brand source={{ uri: place.photo_url }} />
             :
             <NoPosterContainer>
               <Feather name="camera-off" color="#BEBEBE" size={80} />
             </NoPosterContainer>
           }
-        </ImageContainer>
+        </BrandContainer>
         <View  >
 
         </View>
@@ -109,7 +109,7 @@ export default function Shedule({ route }) {
               <TextTitle>{place.name}</TextTitle>
             </NameMarket>
             <FavContainer>
-              <FavButton activeOpacity={0.5} onPress={() => { handleLike() }}  >
+              <FavButton onPress={() => { handleLike() }}  >
                 <MaterialIcons
                   name={liked ? "favorite" : "favorite-border"}
                   size={30}
@@ -119,7 +119,7 @@ export default function Shedule({ route }) {
             </FavContainer>
           </ContainerTitle>
           <ContainerAdress>
-            <MaterialIcons name="home" size={20} />
+            <MaterialIcons name="home" size={20} color="#000" />
             <Adress>
               <TextAdress>
                 {address.city}, {address.UF}
@@ -132,45 +132,18 @@ export default function Shedule({ route }) {
           <ScrollView style={{ width: '100%' }} >
             <ContainerList>
               <ContainerDropdown>
-                <Dropdown
-                  label='Escolha o dia'
+                <DayDropdown
                   data={getDays()}
-                  itemPadding={8}
-                  fontSize={21}
-                  baseColor={"#868686"}
-                  containerStyle={({
-                    borderRadius: 13,
-                    height: 56,
-                    backgroundColor: '#FFFFFF',
-                    justifyContent: "center",
-                    paddingHorizontal: 15,
-                    marginTop: 20
-                  })}
                   onChangeText={text => setDate(text)}
                   value={date}
                 />
-                <Dropdown
-                  label='Escolha o horário'
+                <HourDropdown
                   data={getSchedules()}
-                  itemPadding={8}
-                  fontSize={21}
-                  baseColor={"#868686"}
-                  containerStyle={({
-                    borderRadius: 13,
-                    height: 56,
-                    marginTop: 21,
-                    backgroundColor: '#FFFFFF',
-                    justifyContent: "center",
-                    marginBottom: 30,
-                    paddingHorizontal: 15
-                  })}
                   onChangeText={text => setHour(text)}
                   value={hour}
                 />
-                <ScheduleButton activeOpacity={0.5} onPress={booking} >
-                  <TextBox>
-                    Agendar
-               </TextBox>
+                <ScheduleButton onPress={booking} >
+                  <TextBox>Agendar</TextBox>
                 </ScheduleButton>
               </ContainerDropdown>
             </ContainerList>

@@ -36,19 +36,19 @@ export default function Map() {
       }
     }
 
-    async function getApi() {
+    (async () => {
       const response = await api.get('/company');
 
       setPlaces(response.data);
-    }
+    })();
 
-    getApi();
     getPosition();
   }, []);
 
   if (!currentRegion) {
     return null;
   }
+
   return (
     <Container>
       <MapView style={{ flex: 1 }} initialRegion={currentRegion}>
@@ -98,24 +98,3 @@ export default function Map() {
     </Container >
   )
 }
-
-{/* <Marker coordinate={{ latitude: -3.0031862, longitude: -59.9807489 }} >
-          <Brand source={{ uri: 'https://images.gupy.io/unsafe/85x85/https://s3.amazonaws.com/gupy5/production/companies/361/career/805/images/logo.png' }} />
-          <Callout tooltip={true} onPress={() => { navigation.navigate('Schedule', { company_id: "5e995fef90e2e525c9d95b81" }) }} >
-            <CalloutContainer>
-              <NameText>Atack</NameText>
-              <TypeContainer>
-                <AntDesign name="shoppingcart" size={20} style={{ marginRight: 10 }} color="#3BC365" />
-                <TypeText>Supermercado</TypeText>
-              </TypeContainer>
-
-              <BottomContainer>
-                <AvailableText>Disponível</AvailableText>
-                <GoToContainer>
-                  <FontAwesome name="send" size={20} color="#3BC365" />
-                  <GoToText>Ir para a loja</GoToText>
-                </GoToContainer>
-              </BottomContainer>
-            </CalloutContainer>
-          </Callout>
-        </Marker> */}

@@ -11,7 +11,7 @@ import {
 
 function Card({ name, iconName, Iconcolor, onPress }) {
   return (
-    <Option activeOpacity={0.5} onPress={onPress} >
+    <Option onPress={onPress} >
       <CardContent>
         <IconContainer>
           <MaterialIcons name={iconName} size={50} color={Iconcolor} />
@@ -26,7 +26,7 @@ function Card({ name, iconName, Iconcolor, onPress }) {
 }
 
 export default function Profile({ route }) {
-  const { AuthContext, email, password, name, _id } = route.params;
+  const { AuthContext, name } = route.params;
 
   const { signOut } = useContext(AuthContext);
 
@@ -38,7 +38,7 @@ export default function Profile({ route }) {
     <Container>
       <StatusBar />
       <HeaderTitle>Profile</HeaderTitle>
-      <UsernameCard activeOpacity={0.5}>
+      <UsernameCard>
         <IconContainer>
           <MaterialIcons name="account-circle" size={50} color="#3BC365" />
         </IconContainer>

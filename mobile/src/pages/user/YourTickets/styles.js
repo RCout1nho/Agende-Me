@@ -13,7 +13,9 @@ export const HeadTitle = styled.Text`
   padding: 10px 25px;
 `;
 
-export const CardContainer = styled.TouchableOpacity`
+export const CardContainer = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.5,
+})`
   background: #3BC365;
   border-radius: 17px;
   width: 90%;

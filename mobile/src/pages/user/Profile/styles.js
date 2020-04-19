@@ -18,7 +18,9 @@ export const HeaderTitle = styled.Text`
   margin: 10px 0px;
 `;
 
-export const UsernameCard = styled.TouchableOpacity`
+export const UsernameCard = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.5,
+})`
   height: 100px;
   width: 90%;
   background: #fff;
@@ -48,7 +50,9 @@ export const OptionsCard = styled.View`
   margin-bottom: 10px;
 `;
 
-export const Option = styled.TouchableOpacity`
+export const Option = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.5,
+})`
   height: 100px;
   width: 100%;
   background: #fff;

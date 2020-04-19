@@ -3,34 +3,33 @@ import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { IconButton } from 'react-native-paper';
 
-import StatusBar from '../../../components/StatusBar';
 import {
   Container, HeadLogo, Title,
-  TitleContainer, ShowPlacesText, ShowPlacesContainer, HeadLogoContainer,
+  TitleContainer, HeadLogoContainer,
   Head, HeadButtonContainer
 } from './styles';
 
+import logo from '../../../assets/logo-S.png';
+
+import StatusBar from '../../../components/StatusBar';
 import SearchBar from '../../../components/SearchBar';
 import Card from '../../../components/Card';
-
-import logo from '../../../assets/logo-S.png';
 
 import api from '../../../services/api';
 
 export default function Places({ route }) {
-  const [places, setPlaces] = useState([]);
   const navigation = useNavigation();
+
+  const [places, setPlaces] = useState([]);
 
   const { type, name } = route.params;
 
   useEffect(() => {
-    async function apiGet() {
+    (async () => {
       const response = await api.get(`/company/${String(type).toLowerCase()}`);
 
       setPlaces(response.data);
-    }
-
-    apiGet();
+    })()
   }, []);
 
   function goSchedule(_id) {

@@ -46,7 +46,9 @@ export const Code = styled.View`
   elevation: 10;
 `;
 
-export const BtnSave = styled.TouchableOpacity`
+export const BtnSave = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.5
+})`
   width: 325px;
   height: 80px;
   background: #3BC365;

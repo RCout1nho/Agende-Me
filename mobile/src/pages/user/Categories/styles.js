@@ -29,7 +29,9 @@ export const CardsContainer = styled.ScrollView`
   padding: 20px;
 `;
 
-export const Card = styled.TouchableOpacity`
+export const Card = styled.TouchableOpacity.attrs({
+  activityOpacity: 0.5,
+})`
   border: 1px solid #D9D0E3;
   border-radius: 8px;
   background: #fff;
@@ -93,7 +95,9 @@ export const HeadButtonContainer = styled.View`
   height: 100%;
 `;
 
-export const ShowPlacesContainer = styled.TouchableOpacity`
+export const ShowPlacesContainer = styled.TouchableOpacity.attrs({
+  activityOpacity: 0.5,
+})`
   align-self: center;
   margin-top: 10px;
   margin-bottom: 10px;

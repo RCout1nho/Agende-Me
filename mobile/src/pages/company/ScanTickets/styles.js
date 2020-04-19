@@ -8,6 +8,14 @@ export const Top = styled.View`
   align-items: center;
 `;
 
+export const CenterBorder = styled.View`
+  flex: 1;
+  border-width: 1px;
+  border-color: #fff;
+  border-radius: 5px;
+  border-style: dashed;
+`;
+
 export const Center = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -52,4 +60,10 @@ export const TitleText = styled.Text`
   text-align: center;
   font-weight: 400;
   color: #47B76A;
+`;
+
+export const ReadAgainText = styled.Text`
+  font-size: 17;
+  color: #fff;
+  font-weight: bold;
 `;
