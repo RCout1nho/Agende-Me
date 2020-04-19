@@ -21,6 +21,7 @@ const CompanySchema = new mongoose.Schema({
   available: Boolean,
   haveImage: Boolean,
   type: String,
+  email: String,
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'

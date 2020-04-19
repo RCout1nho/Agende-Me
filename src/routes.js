@@ -22,7 +22,8 @@ routes.post('/booking/:company', BookingController.store);
 routes.get('/booking/:user', BookingController.show);
 routes.get('/booking', BookingController.index);
 
-routes.get('/auth/user', AuthenticationController.auth);
+routes.get('/auth/user', AuthenticationController.userAuth);
+routes.get('/auth/company', AuthenticationController.companyAuth);
 
 routes.get('/company/:type', CompanyController.show);
 routes.get('/company/find/:_id', CompanyController.getById);
