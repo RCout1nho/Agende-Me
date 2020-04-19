@@ -18,7 +18,7 @@
 </p>
 
 <p align="center" >
-  <a href="#sobre-o-projeto" >Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#mag-sobre-o-projeto" >Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#open_book-esclarecimentos" >Esclarecimentos</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#gear-funcionamento" >Funcionamento</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-feito-com" >Feito com</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -27,13 +27,13 @@
 </p>
 
 
-## Sobre o Projeto 
+## :mag: Sobre o Projeto 
 Esse projeto foi desenvolvido tecnicamante por **Ricardo Coutinho**:[linkedIn](https://www.linkedin.com/in/rcout1nho/)-[github](https://github.com/RCout1nho) e **Orlando Vandres**[linkedIn](www.linkedin.com/in/orlando-vandres)-[github](https://github.com/Vandrekad)
 como uma solução para o hackaton [Pandemic Hackfest: Saúde](http://www.amazonhackfest.com/) do Ministério Público de Estado do Amazonas.
 
 Os Designers responsáveis pelas interfaces foram **Nelson Fernandes**:[linkedIn](https://www.linkedin.com/in/nelsonffernandes/) , **Charlene Gualberto**-[linkedIn](https://www.linkedin.com/in/charlenegualberto)-[behance](https://www.behance.net/charleneny) e **Wesley Albuquerque**:[linkedIn](https://www.linkedin.com/in/wesley-hip%C3%B3lito-albuquerque-a03779135)-[Behance](https://www.behance.net/wesleyalbuque).
 
-A equipe de Marketing é composta por **Rebeca Alves**-[linkedIn](https://www.linkedin.com/in/rebeca-alves-mendes-060990195/), **Maria Giovanna**,
+A equipe de Marketing é composta por **Rebeca Alves**-[linkedIn](https://www.linkedin.com/in/rebeca-alves-mendes-060990195/) e **Maria Giovanna**.
 
 
 A equipe de Business é composta por **Guilherme Regueira**, **Gabriel Maciel**-[linkedIn](https://www.linkedin.com/in/gabriel-maciel2001/) e **Ryan Albuquerque**-[linkedIn](https://www.linkedin.com/in/ryan-albuquerque/)
@@ -42,7 +42,7 @@ O projeto tem o intuito de evitar que aglomerações em estabelecimentos de serv
 
 No aplicativo, as empresas podem cadastrar a quantidade máxima de pessoas que podem permanecer simultaneamente em seu estabelecimento, já os usuários, podem consultar quais empresas estão disponíveis em determinado horário, e agendar uma "hora" para utilizá-lo, de forma a manter um fluxo organizado de pessoas que utilizam um determinado estabelecimento e evitar a formação de filas, que representam de certa forma um vetor para o corona vírus.
 
-Para mais informações visite [nosso instagram](https://www.instagram.com/agende.me/?hl=pt-br) e assista o nosso [vídeo de pitch](https://www.instagram.com/agende.me/?hl=pt-br).
+Para mais informações visite [nosso instagram](https://www.instagram.com/agende.me/?hl=pt-br) e assista o nosso [vídeo de pitch](https://www.youtube.com/watch?v=qpDs37Fbpyc).
 
 ## :open_book: Esclarecimentos
 
@@ -172,6 +172,8 @@ Para executar essa aplicação é necessário que tenha o [NodeJS](https://nodej
     # com npm
     npm start  
   ```
+  ***OBS:*** Para realizar login no app, um usuário de teste está cadastrado como os seguintes dados: `email:teste@teste.com e senha: teste123`, ou se preferir, crie um cadastro de usuário próprio ;).
+  ***OBS:*** Lembre-se de manter o backend rodando quando utilizar o frontend, caso contrário, as solicitações à API não poderão ser efetivadas.
 
   #### Rodando em um emulador
   Após rodar a aplicação, o expo automaticamente abrirá uma página no seu navegador, selecione a opção *"Run on Android device/emulator"* , certifique-se se estar com o emulador rodando.
@@ -184,3 +186,5 @@ Para executar essa aplicação é necessário que tenha o [NodeJS](https://nodej
 
   ## :page_facing_up: Licença
   Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/RCout1nho/Agende-Me/blob/master/LICENSE) para mais detalhes
+
+  
