@@ -58,5 +58,6 @@ export const Address2 = styled.View`
 
 export const TextStructure = styled.Text`
   color: #2D0C57;
-  font-size: 34px
+  font-size: 34px;
+  font-weight: bold
 `;
