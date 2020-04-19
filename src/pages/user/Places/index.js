@@ -62,13 +62,11 @@ export default function Places({ route }) {
         data={places}
         renderItem={({ item }) => (
           <Card name={item.name} available={item.available} brand={item.photo_url}
-            haveImage={item.haveImage} onPressLike={() => { }} onPress={() => { goSchedule(item._id) }}
+            haveImage={item.haveImage} onPressLike={() => { }} onPress={() => { item.available && goSchedule(item._id) }}
           />
         )}
         keyExtractor={item => String(item.id)}
       />
-
-
     </Container>
   )
 }

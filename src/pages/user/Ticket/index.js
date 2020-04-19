@@ -25,16 +25,13 @@ export default function Ticket({ route }) {
     <Container>
       <StatusBar />
       <Head>
-        <HeadButtonContainer>
-          <IconButton icon="arrow-left" size={30} onPress={() => { navigation.goBack(); }} />
-        </HeadButtonContainer>
         <HeadLogoContainer>
           <HeadLogo source={logo} />
         </HeadLogoContainer>
       </Head>
 
 
-      <Title >Scheduled! Your ticket:</Title>
+      <Title >Agendado! Seu bilhete:</Title>
       <Code >
         {
           rendered &&
@@ -48,8 +45,8 @@ export default function Ticket({ route }) {
         }
       </Code>
 
-      <BtnSave activeOpacity={0.5} >
-        <BtnText>Save</BtnText>
+      <BtnSave activeOpacity={0.5} onPress={() => { navigation.goBack() }} >
+        <BtnText>OK</BtnText>
       </BtnSave>
     </Container>
   )
