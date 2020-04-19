@@ -7,7 +7,7 @@ import {
   Container, Form, SubmitBtn, SubmitText, SectionTitle,
   AddressContainer, Address1, Address2, TextStructure, BackgroundImage,
   InputName, InputEmail, InputPassword2, InputPassword, InputCity, InputUF,
-  InputBurgh, InputCEP, InputStreet
+  InputBurgh, InputCEP, InputStreet, InputDDD, InputPhone
 } from './styles';
 
 import Dialog from '../../../components/Dialog'
@@ -123,7 +123,9 @@ function Company() {
       <ScrollView style={{ padding: 20 }} >
         <TextStructure>Bem vindo</TextStructure>
         <TextStructure>Crie seu cadastro de empresa</TextStructure>
+
         <SectionTitle>Endereço</SectionTitle>
+
         <AddressContainer>
           <Address1>
             <InputCity
@@ -145,44 +147,30 @@ function Company() {
               theme={theme}
             />
           </Address2>
+
           <SectionTitle>Contato</SectionTitle>
+
           <Address2>
             <InputDDD
-              label='DDD'
-              mode='outlined'
-
               theme={theme}
-              style={{ width: '20%', paddingRight: 5, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
             <InputPhone
-              label='Telefone'
-              mode='outlined'
-
               theme={theme}
-              style={{ width: '80%', backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
           </Address2>
+
         </AddressContainer>
-        <View>
-          <TextInput
-            label='Email'
-            mode='outlined'
-            theme={theme}
-            style={{ marginTop: 15, backgroundColor: 'rgba(255,255,255,0.8)' }}
-          />
-          <TextInput
-            label='Senha'
-            mode='outlined'
-            theme={theme}
-            style={{ marginTop: 15, backgroundColor: 'rgba(255,255,255,0.8)' }}
-          />
-          <TextInput
-            label='Senha novamente'
-            mode='outlined'
-            theme={theme}
-            style={{ marginTop: 15, backgroundColor: 'rgba(255,255,255,0.8)' }}
-          />
-        </View>
+
+        <InputEmail
+          theme={theme}
+        />
+        <InputPassword
+          theme={theme}
+        />
+        <InputPassword2
+          theme={theme}
+        />
+
         <SubmitBtn>
           <SubmitText>REGISTRAR</SubmitText>
         </SubmitBtn>

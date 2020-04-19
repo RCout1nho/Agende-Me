@@ -57,6 +57,7 @@ export const InputUF = styled(TextInput).attrs({
   label: 'UF',
   mode: 'outlined',
   autoCapitalize: 'characters',
+  maxLength: 2,
 })`
   width: 20%;
   background-color: rgba(255,255,255,0.8);
@@ -94,25 +95,21 @@ export const InputCEP = styled(TextInput).attrs({
 `;
 
 export const InputDDD = styled(TextInput).attrs({
-  label: 'CEP',
+  label: 'DDD',
   mode: 'outlined',
-  maxLength: 8,
-  autoCapitalize: 'words',
+  keyboardType: 'number-pad',
+  maxLength: 2
 })`
-  flex: 1; 
   background: rgba(255,255,255,0.8);
-  padding-right: 5px;
+  width: 20%;
 `;
 
 export const InputPhone = styled(TextInput).attrs({
-  label: 'CEP',
+  label: 'Telefone',
   mode: 'outlined',
-  maxLength: 8,
-  autoCapitalize: 'words',
 })`
-  flex: 1; 
   background: rgba(255,255,255,0.8);
-  padding-right: 5px;
+  width: 80%;
 `;
 
 export const Container = styled.View`
