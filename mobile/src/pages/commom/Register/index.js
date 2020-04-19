@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Image } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { MaterialIcons } from '@expo/vector-icons';
 import { TextInput, HelperText } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
-
-import Dialog from 'react-native-dialog';
 
 import {
   Container, Form, SubmitBtn, SubmitText, SectionTitle,
-  AddressContainer, Address1, Address2, TextStructure
+  AddressContainer, Address1, Address2, TextStructure, BackgroundImage,
+  InputName, InputEmail, InputPassword2, InputPassword, InputCity, InputUF,
+  InputBurgh, InputCEP, InputStreet
 } from './styles';
 
-import backImage from '../../../assets/background.png';
+import Dialog from '../../../components/Dialog'
 
 import api from '../../../services/api';
 
@@ -24,9 +22,7 @@ const theme = {
   }
 }
 
-function User({ route }) {
-  const navigation = useNavigation();
-
+function User() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -63,95 +59,57 @@ function User({ route }) {
     }
   }
 
-  function MyDialog() {
-    return (
-      <View>
-        <Dialog.Container visible={dialogVisible} >
-          <Dialog.Title>{fail ? "Falha!" : "Sucesso!"}</Dialog.Title>
-          <Dialog.Description>
-            {fail ? "Ops, ouve um problema ao criar sua conta, tente novamente mais tarde" :
-              "Sua conta foi criada com sucesso, agora basta ir para o menu login e aproveitar nosso app."}
-          </Dialog.Description>
-          <Dialog.Button label="OK" onPress={() => { setDialogVisible(false); navigation.navigate("Welcome") }} />
-        </Dialog.Container>
-      </View>
-    )
-  }
-
   return (
-    <Form  >
-      <Image source={backImage} style={{ position: 'absolute', height: '100%', width: '100%' }} />
+    <Form >
+      <BackgroundImage />
       <ScrollView style={{ padding: 20 }} >
-        <MyDialog />
-        <TextStructure>
-          Bem vindo
-          </TextStructure>
-        <TextStructure>
-          Crie seu cadastro de usuário
-          </TextStructure>
-        <View style={{ alignItems: 'center' }}>
-        </View>
+        <Dialog dialogVisible={dialogVisible} setDialogVisible={setDialogVisible} fail={fail} />
+        <TextStructure>Bem vindo</TextStructure>
+        <TextStructure>Crie seu cadastro de usuário</TextStructure>
         <View>
-          <TextInput
-            label='Nome'
-            mode='outlined'
+          <InputName
             theme={{ colors: { primary: wrongName ? '#FF5252' : "#3BC365" } }}
             onChangeText={text => setName(text)}
             value={name}
-            autoCapitalize="words"
-            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <HelperText type="error" visible={wrongName} >
-            Senhas não coincidem
-        </HelperText>
+            Nome inválido
+          </HelperText>
         </View>
         <View>
-          <TextInput
-            label='Email'
-            mode='outlined'
+          <InputEmail
             theme={{ colors: { primary: wrongEmail ? '#FF5252' : "#3BC365" } }}
             onChangeText={text => setEmail(text)}
             value={email}
-            keyboardType="email-address"
-            autoCapitalize="none"
-            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <HelperText type="error" visible={wrongEmail} >
             Senhas não coincidem
         </HelperText>
         </View>
         <View>
-          <TextInput
-            label='Senha'
-            mode='outlined'
+          <InputPassword
             theme={{ colors: { primary: wrongPassword ? '#FF5252' : "#3BC365" } }}
             onChangeText={text => setPassword(text)}
             value={password}
-            autoCapitalize="none"
             secureTextEntry
-            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <HelperText type="error" visible={wrongPassword} >
             Senhas não coincidem
-        </HelperText>
+          </HelperText>
         </View>
         <View  >
-          <TextInput
-            label='Repita Senha'
-            mode='outlined'
+          <InputPassword2
             theme={{ colors: { primary: wrongPassword ? '#FF5252' : "#3BC365" } }}
             onChangeText={text => setPassword2(text)}
             value={password2}
-            autoCapitalize="none"
             secureTextEntry
-            style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
           />
           <HelperText type="error" visible={wrongPassword} >
             Senhas não coincidem
-        </HelperText>
+          </HelperText>
         </View>
-        <SubmitBtn onPress={registerUser} activeOpacity={0.5} >
-          <SubmitText >REGISTRAR</SubmitText>
+        <SubmitBtn onPress={registerUser} >
+          <SubmitText>REGISTRAR</SubmitText>
         </SubmitBtn>
       </ScrollView>
     </Form>
@@ -161,65 +119,42 @@ function User({ route }) {
 function Company() {
   return (
     <Form>
-      <Image source={backImage} style={{ position: 'absolute', height: '100%', width: '100%' }} />
+      <BackgroundImage />
       <ScrollView style={{ padding: 20 }} >
-        <TextStructure>
-          Bem vindo
-        </TextStructure>
-        <TextStructure>
-          Crie seu cadastro de empresa
-        </TextStructure>
+        <TextStructure>Bem vindo</TextStructure>
+        <TextStructure>Crie seu cadastro de empresa</TextStructure>
         <SectionTitle>Endereço</SectionTitle>
         <AddressContainer>
           <Address1>
-            <TextInput
-              label='Cidade'
-              mode='outlined'
+            <InputCity
               theme={theme}
-              style={{ width: '70%', backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
-            <TextInput
-              label='UF'
-              mode='outlined'
+            <InputUF
               theme={theme}
-              style={{ width: '20%', backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
           </Address1>
 
           <Address2>
-            <TextInput
-              label='Bairro'
-              mode='outlined'
-
+            <InputBurgh
               theme={theme}
-              style={{ flex: 1, paddingRight: 5, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
-            <TextInput
-              label='Rua'
-              mode='outlined'
-
+            <InputStreet
               theme={theme}
-              style={{ flex: 1, paddingRight: 5, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
-            <TextInput
-              label='CEP'
-              mode='outlined'
-
+            <InputCEP
               theme={theme}
-              style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
           </Address2>
-
           <SectionTitle>Contato</SectionTitle>
           <Address2>
-            <TextInput
+            <InputDDD
               label='DDD'
               mode='outlined'
 
               theme={theme}
               style={{ width: '20%', paddingRight: 5, backgroundColor: 'rgba(255,255,255,0.8)' }}
             />
-            <TextInput
+            <InputPhone
               label='Telefone'
               mode='outlined'
 

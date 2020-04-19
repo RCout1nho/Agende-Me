@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -10,7 +10,6 @@ import {
 
 import background from '../../../assets/background.png';
 import logo from '../../../assets/logo-G.png';
-
 
 export default function Welcome() {
   const navigation = useNavigation();
